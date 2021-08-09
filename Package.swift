@@ -8,6 +8,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/vapor/vapor.git", from: "4.48.3"),
+        .package(url: "https://github.com/vapor/leaf.git", from: "4.1.2"),
         .package(url: "https://github.com/apple/swift-format.git", from: "0.50400.0"),
     ],
     targets: [
@@ -15,6 +16,7 @@ let package = Package(
             name: "App",
             dependencies: [
                 .product(name: "Vapor", package: "vapor"),
+                .product(name: "Leaf", package: "leaf"),
                 .product(name: "SwiftFormat", package: "swift-format"),
             ],
             swiftSettings: [
