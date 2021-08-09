@@ -1,0 +1,14 @@
+.btn.rounded-circle {
+  width: 2rem;
+  height: 2rem;
+}
+
+#editor-container {
+  position: relative;
+  height: 100%;
+}
+
+#result-container {
+  position: relative;
+  height: 100%;
+}

@@ -1,0 +1,60 @@
+"use strict";
+
+export class Configuration {
+  constructor() {}
+
+  static default = {
+    version: 1,
+    maximumBlankLines: 1,
+    lineLength: 100,
+    tabWidth: 8,
+    indentation: {
+      spaces: 2,
+    },
+    respectsExistingLineBreaks: true,
+    lineBreakBeforeControlFlowKeywords: false,
+    lineBreakBeforeEachArgument: false,
+    lineBreakBeforeEachGenericRequirement: false,
+    prioritizeKeepingFunctionOutputTogether: false,
+    indentConditionalCompilationBlocks: true,
+    lineBreakAroundMultilineExpressionChainComponents: false,
+    fileScopedDeclarationPrivacy: {
+      accessLevel: "private",
+    },
+    indentSwitchCaseLabels: false,
+    rules: {
+      AllPublicDeclarationsHaveDocumentation: false,
+      AlwaysUseLowerCamelCase: true,
+      AmbiguousTrailingClosureOverload: true,
+      BeginDocumentationCommentWithOneLineSummary: false,
+      DoNotUseSemicolons: true,
+      DontRepeatTypeInStaticProperties: true,
+      FileScopedDeclarationPrivacy: true,
+      FullyIndirectEnum: true,
+      GroupNumericLiterals: true,
+      IdentifiersMustBeASCII: true,
+      NeverForceUnwrap: false,
+      NeverUseForceTry: false,
+      NeverUseImplicitlyUnwrappedOptionals: false,
+      NoAccessLevelOnExtensionDeclaration: true,
+      NoBlockComments: true,
+      NoCasesWithOnlyFallthrough: true,
+      NoEmptyTrailingClosureParentheses: true,
+      NoLabelsInCasePatterns: true,
+      NoLeadingUnderscores: false,
+      NoParensAroundConditions: true,
+      NoVoidReturnOnFunctionSignature: true,
+      OneCasePerLine: true,
+      OneVariableDeclarationPerLine: true,
+      OnlyOneTrailingClosureArgument: true,
+      OrderedImports: true,
+      ReturnVoidInsteadOfEmptyTuple: true,
+      UseLetInEveryBoundCaseVariable: true,
+      UseShorthandTypeNames: true,
+      UseSingleLinePropertyGetter: true,
+      UseSynthesizedInitializer: true,
+      UseTripleSlashForDocumentationComments: true,
+      ValidateDocumentationComments: false,
+    },
+  };
+}
