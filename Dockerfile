@@ -27,6 +27,9 @@ RUN swift package resolve
 COPY . .
 RUN swift build -c release
 
+COPY ./Resources ./
+RUN cd Resources/formatter && swift build --product swift-format -c release
+
 WORKDIR /staging
 RUN cp "$(swift build --package-path /build -c release --show-bin-path)/Run" ./ \
     && mv /build/Public ./Public && chmod -R a-w ./Public \

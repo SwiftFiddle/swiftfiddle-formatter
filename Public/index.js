@@ -68,7 +68,9 @@ result.renderer.setOptions({
   showPrintMargin: false,
 });
 
-const formatterService = new SwiftFormat("ws://localhost:8080/api/ws");
+const formatterService = new SwiftFormat(
+  "wss://formatter.swiftfiddle.com/api/ws"
+);
 formatterService.onresponse = (response) => {
   if (response) {
     if (response.output) {
