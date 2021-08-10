@@ -8,6 +8,7 @@ import "./js/icon.js";
 
 import { Tooltip } from "bootstrap";
 import { SwiftFormat } from "./js/swift_format.js";
+import { Snackbar } from "./js/snackbar.js";
 import { debounce } from "./js/debounce.js";
 
 import CodeMirror from "codemirror";
@@ -74,6 +75,8 @@ var result = CodeMirror.fromTextArea(
 );
 result.setSize("100%", "90vh");
 
+document.getElementById("clear-button").classList.remove("disabled");
+
 let endpoint;
 if (window.location.protocol === "https:") {
   endpoint = "wss:";
@@ -91,14 +94,14 @@ formatterService.onready = () => {
 
 formatterService.onresponse = (response) => {
   if (response) {
-    if (response.output) {
+    if (response.output.trim()) {
       result.setValue(response.output);
     } else {
       result.setValue(response.original);
     }
 
     if (response.error) {
-      console.log(response.error);
+      Snackbar.alert(response.error);
     }
   }
 };
@@ -132,6 +135,26 @@ form.addEventListener("input", () => {
 document.getElementById("run-button").addEventListener("click", () => {
   sendFormatRequest();
 });
+
+document.getElementById("clear-button").addEventListener("click", () => {
+  editor.setValue("");
+  editor.clearHistory();
+  result.setValue("");
+  result.clearHistory();
+});
+
+if (!navigator.clipboard) {
+  document.getElementById("copy-config-button").classList.add("disabled");
+}
+document
+  .getElementById("copy-config-button")
+  .addEventListener("click", (event) => {
+    if (navigator.clipboard) {
+      const configuration = buildConfiguration();
+      navigator.clipboard.writeText(JSON.stringify(configuration, null, 2));
+      Snackbar.info("Copied!");
+    }
+  });
 
 function sendFormatRequest() {
   document.getElementById("run-button-icon").classList.add("d-none");

@@ -41,6 +41,10 @@
           <span id="run-button-spinner" class="fas fa-circle-notch fa-spin fa-fw ms-2 d-none"></span>
           <span class="mx-2">Run</span>
         </button>
+        <button type="button" id="clear-button" class="btn btn-outline-primary btn-sm rounded-circle p-0 ms-1 disabled"
+          data-bs-toggle="tooltip" data-bs-placement="bottom" title="Clear" aria-label="Clear">
+          <span class="fas fa-eraser fa-fw"></span>
+        </button>
         <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Configuration">
           <button type="button" id="configuration-button" class="btn btn-outline-primary btn-sm rounded-circle p-0 ms-1"
             data-bs-toggle="offcanvas" data-bs-target="#configuration-offcanvas" aria-label="Configuration">
@@ -77,13 +81,23 @@
   <div class="offcanvas offcanvas-start" tabindex="-1" id="configuration-offcanvas"
     aria-labelledby="configuration-offcanvas-label">
     <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="configuration-offcanvas-label">Configuration</h5>
+      <h5 class="offcanvas-title" id="configuration-offcanvas-label">
+        <span class="fas fa-cog fa-fw me-2"></span>Configuration
+      </h5>
+      <button id="copy-config-button" class="btn btn-outline-primary btn-sm p-0 ms-2 me-auto" type="button"
+        data-bs-toggle="tooltip" title="Copy config JSON" aria-label="Copy config JSON">
+        <span class="far fa-clipboard fa-fw"></span>
+      </button>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
       </button>
     </div>
 
     <div class="offcanvas-body py-1">
       <form>
+        <div>
+          <h6 class="pt-2 pb-1"><span class="fal fa-sliders-v me-1"></span>Settings</h6>
+        </div>
+
         <div class="row mb-2 justify-content-between">
           <label for="maximumBlankLines" class="col-sm-8 col-form-label-sm">Maximum Blank Lines</label>
           <div class="col-sm-4">
@@ -227,7 +241,7 @@
         </div>
 
         <div>
-          <h6 class="pt-2 pb-1">Rules</h6>
+          <h6 class="pt-2 pb-1"><span class="far fa-ruler-triangle me-1"></span>Rules</h6>
         </div>
 
         <div class="row mb-2 justify-content-between">
@@ -602,12 +616,13 @@
   <div class="position-absolute top-0 start-50 translate-middle-x p-3" style="z-index: 1081;">
     <div id="snackbar-alert" class="toast align-items-center d-none" role="alert" aria-live="assertive"
       aria-atomic="true">
-      <div class="d-flex">
-        <div class="toast-body fw-bolder">
-          <span class="fas fa-exclamation-triangle text-danger me-2"></span>
-          <span id="snackbar-alert-message" class="text-danger"></span>
-        </div>
-        <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      <div class="toast-header">
+        <span class="fas fa-exclamation-triangle text-danger me-2"></span>
+        <strong class="me-auto">Error</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body fw-bolder">
+        <span id="snackbar-alert-message" class="text-danger"></span>
       </div>
     </div>
   </div>
