@@ -7,7 +7,7 @@ on:
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT }}
   GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
-  SERVICE_NAME: swiftfiddle-formatter
+  SERVICE_NAME: swift-format
   DEPLOY_REGION: us-central1
   GCR_HOSTNAME: us.gcr.io
   FONTAWESOME_TOKEN: ${{ secrets.FONTAWESOME_TOKEN }}
