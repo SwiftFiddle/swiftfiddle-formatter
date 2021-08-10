@@ -5,17 +5,8 @@ import SwiftFormatConfiguration
 func routes(_ app: Application) throws {
     app.get("health") { _ in ["status": "pass"] }
 
-    app.get("playground") { (req) in
+    app.get { (req) in
         return req.view.render("index")
-    }
-
-    app.webSocket { (req, ws) in
-        ws.onText { (ws, text) in
-            let response = format(source: text)
-            if !response.output.isEmpty {
-                ws.send(response.output)
-            }
-        }
     }
 
     app.webSocket("api", "ws") { (req, ws) in
