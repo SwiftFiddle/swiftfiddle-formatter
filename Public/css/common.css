@@ -3,16 +3,10 @@
   height: 2rem;
 }
 
-#editor-container {
-  position: relative;
-  height: 100%;
-  line-height: 1.5;
-}
-
-#result-container {
-  position: relative;
-  height: 100%;
-  line-height: 1.5;
+.CodeMirror * {
+  line-height: 1.6;
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  font-size: 12px;
 }
 
 .dropdown-list-item.active-tick a::after {

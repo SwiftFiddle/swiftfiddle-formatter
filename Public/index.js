@@ -2,46 +2,40 @@
 
 import "./scss/default.scss";
 import "./css/common.css";
+import "codemirror/lib/codemirror.css";
+
 import "./js/icon.js";
 
 import { Tooltip } from "bootstrap";
 import { SwiftFormat } from "./js/swift_format.js";
 import { debounce } from "./js/debounce.js";
 
-import * as ace from "ace-builds";
-import "ace-builds/src-min-noconflict/mode-swift";
-import "ace-builds/src-min-noconflict/theme-xcode";
-import "ace-builds/src-min-noconflict/ext-language_tools";
+import CodeMirror from "codemirror";
+import "codemirror/mode/swift/swift";
+import "codemirror/addon/edit/matchbrackets";
+import "codemirror/addon/edit/closebrackets";
+import "codemirror/addon/edit/trailingspace";
+
+var editor = CodeMirror.fromTextArea(
+  document.getElementById("editor-container"),
+  {
+    mode: "swift",
+    lineNumbers: true,
+    lineWrapping: false,
+    tabSize: 2,
+    screenReaderLabel: "Editor Pane",
+    matchBrackets: true,
+    autoCloseBrackets: true,
+    showTrailingSpace: true,
+  }
+);
+editor.setSize("100%", "100%");
 
 [].slice
   .call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
   .map((trigger) => {
     return new Tooltip(trigger);
   });
-
-const editor = ace.edit("editor-container");
-editor.setTheme("ace/theme/xcode");
-editor.session.setMode("ace/mode/swift");
-editor.$blockScrolling = Infinity;
-editor.setOptions({
-  tabSize: 2,
-  useSoftTabs: true,
-  autoScrollEditorIntoView: true,
-  fontFamily: "Menlo,sans-serif,monospace",
-  fontSize: "9.5pt",
-  showInvisibles: false,
-  enableAutoIndent: true,
-  enableBasicAutocompletion: true,
-  enableSnippets: true,
-  enableLiveAutocompletion: true,
-  scrollPastEnd: 0.5, // Overscroll
-  wrap: "free",
-  displayIndentGuides: true,
-});
-editor.renderer.setOptions({
-  showFoldWidgets: false,
-  showPrintMargin: false,
-});
 
 editor.setValue(`        struct ShippingAddress : Codable  {
  var recipient: String
@@ -62,32 +56,23 @@ locality: String,region: String,postalCode: String,country:String               
 
 let applePark = ShippingAddress(recipient:"Apple, Inc.", streetAddress:"1 Apple Park Way", locality:"Cupertino", region:"CA", postalCode:"95014", country:"US")
 `);
-editor.clearSelection();
+editor.clearHistory();
+editor.focus();
+editor.setCursor({ line: editor.lastLine() + 1, ch: 0 });
 
-const result = ace.edit("result-container");
-result.setTheme("ace/theme/xcode");
-result.session.setMode("ace/mode/swift");
-result.$blockScrolling = Infinity;
-result.setOptions({
-  tabSize: 2,
-  useSoftTabs: true,
-  autoScrollEditorIntoView: true,
-  fontFamily: "Menlo,sans-serif,monospace",
-  fontSize: "9.5pt",
-  showInvisibles: false,
-  enableAutoIndent: true,
-  enableBasicAutocompletion: true,
-  enableSnippets: true,
-  enableLiveAutocompletion: true,
-  scrollPastEnd: 0.5, // Overscroll
-  wrap: "free",
-  displayIndentGuides: true,
-  readOnly: true,
-});
-result.renderer.setOptions({
-  showFoldWidgets: false,
-  showPrintMargin: false,
-});
+var result = CodeMirror.fromTextArea(
+  document.getElementById("result-container"),
+  {
+    mode: "swift",
+    lineNumbers: true,
+    lineWrapping: false,
+    readOnly: true,
+    screenReaderLabel: "Result Pane",
+    matchBrackets: true,
+    showTrailingSpace: true,
+  }
+);
+result.setSize("100%", "100%");
 
 let endpoint;
 if (window.location.protocol === "https:") {
@@ -115,8 +100,6 @@ formatterService.onresponse = (response) => {
     if (response.error) {
       console.log(response.error);
     }
-
-    result.clearSelection();
   }
 };
 
