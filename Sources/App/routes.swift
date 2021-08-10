@@ -43,6 +43,29 @@ func routes(_ app: Application) throws {
         }
     }
 
+    app.on(.POST, "api", body: .collect(maxSize: "10mb")) { (req) -> FormatResponse in
+        guard let request = try? req.content.decode(FormatRequest.self) else {
+            throw Abort(.badRequest)
+        }
+
+        let (output, error) = try format(
+            source: request.code,
+            configuration: request.configuration
+        )
+        let (_, lintMessage) = try lint(
+            source: request.code,
+            configuration: request.configuration
+        )
+
+        let response = FormatResponse(
+            output: output,
+            error: error,
+            lintMessage: lintMessage,
+            original: request.code
+        )
+        return response
+    }
+
     func format(source: String, configuration: Configuration?) throws -> (stdout: String, stderr: String) {
         return try exec(mode: "format", source: source, configuration: configuration)
     }
@@ -104,7 +127,7 @@ private struct FormatRequest: Codable {
     let configuration: Configuration?
 }
 
-private struct FormatResponse: Codable {
+private struct FormatResponse: Content {
     let output: String
     let error: String
     let lintMessage: String
