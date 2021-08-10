@@ -18,9 +18,20 @@ func routes(_ app: Application) throws {
                 let request = try decoder.decode(FormatRequest.self, from: requestData)
 
                 let encoder = JSONEncoder()
-                let response = try format(
+                let (output, error) = try format(
                     source: request.code,
                     configuration: request.configuration
+                )
+                let (_, lintMessage) = try lint(
+                    source: request.code,
+                    configuration: request.configuration
+                )
+
+                let response = FormatResponse(
+                    output: output,
+                    error: error,
+                    lintMessage: lintMessage,
+                    original: request.code
                 )
                 if let message = String(data: try encoder.encode(response), encoding: .utf8) {
                     ws.send(message)
@@ -32,7 +43,15 @@ func routes(_ app: Application) throws {
         }
     }
 
-    func format(source: String, configuration: Configuration?) throws -> FormatResponse {
+    func format(source: String, configuration: Configuration?) throws -> (stdout: String, stderr: String) {
+        return try exec(mode: "format", source: source, configuration: configuration)
+    }
+
+    func lint(source: String, configuration: Configuration?) throws -> (stdout: String, stderr: String) {
+        return try exec(mode: "lint", source: source, configuration: configuration)
+    }
+
+    func exec(mode: String, source: String, configuration: Configuration?) throws -> (stdout: String, stderr: String) {
         guard let input = source.data(using: .utf8) else {
             throw Abort(.badRequest)
         }
@@ -57,7 +76,7 @@ func routes(_ app: Application) throws {
             fileURLWithPath: "\(app.directory.resourcesDirectory)formatter/.build/release/swift-format"
         )
         process.executableURL = executableURL
-        process.arguments = ["--configuration", configurationFile.path]
+        process.arguments = ["--mode", mode, "--configuration", configurationFile.path]
 
         process.standardInput = standardInput
         process.standardOutput = standardOutput
@@ -66,17 +85,17 @@ func routes(_ app: Application) throws {
         process.launch()
         process.waitUntilExit()
 
-        let data = standardOutput.fileHandleForReading.readDataToEndOfFile()
-        guard let output = String(data: data, encoding: .utf8) else {
+        let stdoutData = standardOutput.fileHandleForReading.readDataToEndOfFile()
+        guard let stdout = String(data: stdoutData, encoding: .utf8) else {
             throw Abort(.internalServerError)
         }
 
-        let errorData = standardError.fileHandleForReading.readDataToEndOfFile()
-        guard let errorOutput = String(data: errorData, encoding: .utf8) else {
+        let stderrData = standardError.fileHandleForReading.readDataToEndOfFile()
+        guard let stderr = String(data: stderrData, encoding: .utf8) else {
             throw Abort(.internalServerError)
         }
 
-        return FormatResponse(output: output, error: errorOutput, original: source)
+        return (stdout, stderr)
     }
 }
 
@@ -88,5 +107,6 @@ private struct FormatRequest: Codable {
 private struct FormatResponse: Codable {
     let output: String
     let error: String
+    let lintMessage: String
     let original: String
 }

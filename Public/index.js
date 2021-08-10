@@ -2,20 +2,25 @@
 
 import "./scss/default.scss";
 import "./css/common.css";
+
 import "codemirror/lib/codemirror.css";
-
-import "./js/icon.js";
-
-import { Tooltip } from "bootstrap";
-import { SwiftFormat } from "./js/swift_format.js";
-import { Snackbar } from "./js/snackbar.js";
-import { debounce } from "./js/debounce.js";
+import "codemirror/addon/lint/lint.css";
 
 import CodeMirror from "codemirror";
 import "codemirror/mode/swift/swift";
 import "codemirror/addon/edit/matchbrackets";
 import "codemirror/addon/edit/closebrackets";
 import "codemirror/addon/edit/trailingspace";
+import "codemirror/addon/lint/lint";
+
+import "./js/icon.js";
+
+import { Tooltip } from "bootstrap";
+import { SwiftFormat } from "./js/swift_format.js";
+import { Snackbar } from "./js/snackbar.js";
+import { Defaults } from "./js/defaults.js";
+import { debounce } from "./js/debounce.js";
+import { Configuration } from "./js/configuration.js";
 
 var editor = CodeMirror.fromTextArea(
   document.getElementById("editor-container"),
@@ -28,9 +33,11 @@ var editor = CodeMirror.fromTextArea(
     matchBrackets: true,
     autoCloseBrackets: true,
     showTrailingSpace: true,
+    gutters: ["CodeMirror-lint-markers"],
+    lint: true,
   }
 );
-editor.setSize("100%", "90vh");
+editor.setSize("100%", "100%");
 
 [].slice
   .call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
@@ -38,25 +45,7 @@ editor.setSize("100%", "90vh");
     return new Tooltip(trigger);
   });
 
-editor.setValue(`        struct ShippingAddress : Codable  {
- var recipient: String
-  var streetAddress : String
-   var locality :String
-    var region   :String;var postalCode:String
-    var country:String
-
-    init(     recipient: String,        streetAddress: String,
-locality: String,region: String,postalCode: String,country:String               )
-{
-    self.recipient = recipient
-    self.streetAddress = streetAddress
-        self.locality  = locality
-    self.region        = region;self.postalCode=postalCode
-        guard country.count == 2, country == country.uppercased() else { fatalError("invalid country code") }
-    self.country=country}}
-
-let applePark = ShippingAddress(recipient:"Apple, Inc.", streetAddress:"1 Apple Park Way", locality:"Cupertino", region:"CA", postalCode:"95014", country:"US")
-`);
+editor.setValue(Defaults.code);
 editor.clearHistory();
 editor.focus();
 editor.setCursor({ line: editor.lastLine() + 1, ch: 0 });
@@ -73,7 +62,7 @@ var result = CodeMirror.fromTextArea(
     showTrailingSpace: true,
   }
 );
-result.setSize("100%", "90vh");
+result.setSize("100%", "100%");
 
 document.getElementById("clear-button").classList.remove("disabled");
 
@@ -99,6 +88,28 @@ formatterService.onresponse = (response) => {
     } else {
       result.setValue(response.original);
     }
+
+    editor.setOption("lint", {
+      getAnnotations: () => {
+        const message = response.lintMessage;
+        const matches = message.matchAll(
+          /.+\/<stdin>:(\d+):(\d+): (error|warning|note): ([\s\S]*?)\n*(?=(?:\/|$))/gi
+        );
+        return [...matches].map((match) => {
+          const row = +match[1] - 1; // 0 origin
+          const column = +match[2];
+          const text = match[4];
+          const severity = match[3];
+
+          return {
+            from: CodeMirror.Pos(row, column),
+            to: CodeMirror.Pos(row, column + 1),
+            message: text,
+            severity: severity,
+          };
+        });
+      },
+    });
 
     if (response.error) {
       Snackbar.alert(response.error);
@@ -171,7 +182,7 @@ function sendFormatRequest() {
 }
 
 function buildConfiguration() {
-  const configuration = {};
+  const configuration = Configuration.default;
 
   [...form.getElementsByTagName("input")].forEach((input) => {
     if (input.id === "indentationCount") {
@@ -191,9 +202,11 @@ function buildConfiguration() {
       }
     }
   });
+
   const accessLevel = document.getElementById(
     "fileScopedDeclarationPrivacy"
   ).textContent;
+
   configuration["fileScopedDeclarationPrivacy"] = { accessLevel: accessLevel };
 
   return configuration;

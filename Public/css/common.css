@@ -7,6 +7,13 @@
   line-height: 1.6;
   font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
   font-size: 12px;
+  max-height: 90vh;
+}
+
+@media (max-width: 767.98px) {
+  .CodeMirror * {
+    max-height: 50vh;
+  }
 }
 
 .dropdown-list-item.active-tick a::after {
