@@ -29,7 +29,7 @@ var editor = CodeMirror.fromTextArea(
     showTrailingSpace: true,
   }
 );
-editor.setSize("100%", "100%");
+editor.setSize("100%", "90vh");
 
 [].slice
   .call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
@@ -72,7 +72,7 @@ var result = CodeMirror.fromTextArea(
     showTrailingSpace: true,
   }
 );
-result.setSize("100%", "100%");
+result.setSize("100%", "90vh");
 
 let endpoint;
 if (window.location.protocol === "https:") {

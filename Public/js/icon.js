@@ -2,13 +2,9 @@
 
 import { config, library, dom } from "@fortawesome/fontawesome-svg-core";
 import {
-  faCodeBranch,
   faPlay,
   faCircleNotch,
-  faStop,
   faEraser,
-  faAlignLeft,
-  faShareAlt,
   faCog,
   faQuestion,
   faExclamationTriangle,
@@ -24,22 +20,13 @@ import {
   faAt,
 } from "@fortawesome/pro-regular-svg-icons";
 import { faMonitorHeartRate } from "@fortawesome/pro-light-svg-icons";
-import {
-  faSwift,
-  faGithub,
-  faTwitter,
-  faFacebookSquare,
-} from "@fortawesome/free-brands-svg-icons";
+import { faSwift, faGithub } from "@fortawesome/free-brands-svg-icons";
 
 config.searchPseudoElements = true;
 library.add(
-  faCodeBranch,
   faPlay,
   faCircleNotch,
-  faStop,
   faEraser,
-  faAlignLeft,
-  faShareAlt,
   faCog,
   faQuestion,
   faExclamationTriangle,
@@ -56,8 +43,6 @@ library.add(
   faMonitorHeartRate,
 
   faSwift,
-  faGithub,
-  faTwitter,
-  faFacebookSquare
+  faGithub
 );
 dom.watch();
