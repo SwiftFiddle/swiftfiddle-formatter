@@ -5,14 +5,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta property="twitter:image" content="#(ogpImageUrl)" />
-  <meta property="og:image" content="#(ogpImageUrl)" />
   <meta property="og:title" content="Swift Online Playground">
   <meta property="og:description"
-    content="Swift Formatter allows you to run swift-format online and see the results." />
-  <meta name="description" content="Swift Formatter allows you to run swift-format online and see the results." />
-  <meta property="og:site_name" content="Swift Formatter - swift-format playground" />
+    content="Online Swift code formatter - format a Swift code, making it readable and pretty, with the proper indentation." />
+  <meta name="description"
+    content="Online Swift code formatter - format a Swift code, making it readable and pretty, with the proper indentation." />
+  <meta property="og:site_name" content="Swift Formatter - Online Swift code formatter" />
 
   <meta name="msapplication-TileColor" content="\#da532c">
   <meta name="msapplication-config" content="/favicons/browserconfig.xml">
@@ -24,7 +22,7 @@
   <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="\#5bbad5">
   <link rel="shortcut icon" href="/favicons/favicon.ico">
 
-  <title>Swift Formatter - swift-format playground</title>
+  <title>Swift Formatter - Online Swift code formatter</title>
 </head>
 
 <body>

@@ -71,6 +71,7 @@ module.exports = {
         { from: "./Public/favicons", to: "favicons" },
         { from: "./Public/apple-touch-icon.png", to: "apple-touch-icon.png" },
         { from: "./Public/favicon.ico", to: "favicon.ico" },
+        { from: "./Public/error.leaf", to: "error.leaf" },
       ],
     }),
   ],
