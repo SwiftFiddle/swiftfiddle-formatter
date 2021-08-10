@@ -11,12 +11,11 @@ import {
 } from "@fortawesome/pro-solid-svg-icons";
 import {
   faCheck,
-  faRulerTriangle,
   faClipboard,
   faCheckCircle,
   faAt,
 } from "@fortawesome/pro-regular-svg-icons";
-import { faSlidersV } from "@fortawesome/pro-light-svg-icons";
+import { faSlidersV, faRulerTriangle } from "@fortawesome/pro-light-svg-icons";
 import { faSwift, faGithub } from "@fortawesome/free-brands-svg-icons";
 
 config.searchPseudoElements = true;
@@ -29,12 +28,12 @@ library.add(
   faExclamationTriangle,
 
   faCheck,
-  faRulerTriangle,
   faClipboard,
   faCheckCircle,
   faAt,
 
   faSlidersV,
+  faRulerTriangle,
 
   faSwift,
   faGithub

@@ -99,7 +99,7 @@
     <div class="offcanvas-body py-1">
       <form>
         <div>
-          <h6 class="pt-2 pb-1"><span class="fal fa-sliders-v me-1"></span>Settings</h6>
+          <h6 class="pt-2 pb-1"><span class="fal fa-sliders-v me-2"></span>Settings</h6>
         </div>
 
         <div class="row mb-2 justify-content-between">
@@ -245,7 +245,7 @@
         </div>
 
         <div>
-          <h6 class="pt-2 pb-1"><span class="far fa-ruler-triangle me-1"></span>Rules</h6>
+          <h6 class="pt-2 pb-1"><span class="fal fa-ruler-triangle me-2"></span>Rules</h6>
         </div>
 
         <div class="row mb-2 justify-content-between">
