@@ -84,8 +84,12 @@
       <h5 class="offcanvas-title" id="configuration-offcanvas-label">
         <span class="fas fa-cog fa-fw me-2"></span>Configuration
       </h5>
-      <button id="copy-config-button" class="btn btn-outline-primary btn-sm p-0 ms-2 me-auto" type="button"
-        data-bs-toggle="tooltip" title="Copy config JSON" aria-label="Copy config JSON">
+      <button id="reset-config-button" class="btn btn-outline-primary btn-sm rounded-circle p-0 ms-2" type="button"
+        data-bs-toggle="tooltip" title="Reset to default" aria-label="Reset to default">
+        <span class="fas fa-undo fa-fw"></span>
+      </button>
+      <button id="copy-config-button" class="btn btn-outline-primary btn-sm rounded-circle p-0 ms-2 me-auto"
+        type="button" data-bs-toggle="tooltip" title="Copy config JSON" aria-label="Copy config JSON">
         <span class="far fa-clipboard fa-fw"></span>
       </button>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">

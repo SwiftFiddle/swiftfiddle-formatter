@@ -6,6 +6,7 @@ import {
   faCircleNotch,
   faEraser,
   faCog,
+  faUndo,
   faExclamationTriangle,
 } from "@fortawesome/pro-solid-svg-icons";
 import {
@@ -24,6 +25,7 @@ library.add(
   faCircleNotch,
   faEraser,
   faCog,
+  faUndo,
   faExclamationTriangle,
 
   faCheck,

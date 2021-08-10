@@ -155,18 +155,20 @@ document.getElementById("clear-button").addEventListener("click", () => {
   result.clearHistory();
 });
 
+document.getElementById("reset-config-button").addEventListener("click", () => {
+  resetConfiguration();
+});
+
 if (!navigator.clipboard) {
   document.getElementById("copy-config-button").classList.add("disabled");
 }
-document
-  .getElementById("copy-config-button")
-  .addEventListener("click", (event) => {
-    if (navigator.clipboard) {
-      const configuration = buildConfiguration();
-      navigator.clipboard.writeText(JSON.stringify(configuration, null, 2));
-      Snackbar.info("Copied!");
-    }
-  });
+document.getElementById("copy-config-button").addEventListener("click", () => {
+  if (navigator.clipboard) {
+    const configuration = buildConfiguration();
+    navigator.clipboard.writeText(JSON.stringify(configuration, null, 2));
+    Snackbar.info("Copied!");
+  }
+});
 
 function sendFormatRequest() {
   document.getElementById("run-button-icon").classList.add("d-none");
@@ -183,7 +185,7 @@ function sendFormatRequest() {
 }
 
 function buildConfiguration() {
-  const configuration = Configuration.default;
+  const configuration = JSON.parse(JSON.stringify(Configuration.default));
 
   [...form.getElementsByTagName("input")].forEach((input) => {
     if (input.id === "indentationCount") {
@@ -211,4 +213,40 @@ function buildConfiguration() {
   configuration["fileScopedDeclarationPrivacy"] = { accessLevel: accessLevel };
 
   return configuration;
+}
+
+function resetConfiguration() {
+  const configuration = JSON.parse(JSON.stringify(Configuration.default));
+
+  [...form.getElementsByTagName("input")].forEach((input) => {
+    if (input.id === "indentationCount") {
+      input.value = null;
+      document.getElementById("indentation").innerText = "Spaces";
+    } else if (input.type === "checkbox") {
+      if (configuration[input.id]) {
+        input.checked = configuration[input.id];
+      } else {
+        input.checked = configuration.rules[input.id];
+      }
+    } else {
+      input.value = null;
+    }
+  });
+
+  document.getElementById("fileScopedDeclarationPrivacy").innerText = "private";
+
+  document.querySelectorAll(".dropdown-list-item").forEach((listItem) => {
+    for (let sibling of listItem.parentNode.children) {
+      sibling.classList.remove("active-tick");
+    }
+    for (let sibling of listItem.parentNode.children) {
+      for (let child of sibling.children) {
+        if (child.textContent == "Spaces" || child.textContent == "private") {
+          sibling.classList.add("active-tick");
+        }
+      }
+    }
+  });
+
+  sendFormatRequest();
 }
