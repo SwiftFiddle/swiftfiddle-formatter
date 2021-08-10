@@ -10,15 +10,10 @@ func routes(_ app: Application) throws {
     }
 
     app.webSocket { (req, ws) in
-        let formatter = Formatter()
-
         ws.onText { (ws, text) in
-            do {
-                let output = try formatter.format(source: text)
-                ws.send(output)
-            } catch {
-                req.logger.error("\(error)")
-                ws.send(text)
+            let response = format(source: text)
+            if !response.output.isEmpty {
+                ws.send(response.output)
             }
         }
     }
@@ -30,48 +25,11 @@ func routes(_ app: Application) throws {
 
                 let decoder = JSONDecoder()
                 let request = try decoder.decode(FormatRequest.self, from: requestData)
-                guard let input = request.code.data(using: .utf8) else { return }
-
-                let standardInput = Pipe()
-                let standardOutput = Pipe()
-                let standardError = Pipe()
-
-                let fileHandle = standardInput.fileHandleForWriting
-                fileHandle.write(input)
-                try fileHandle.close()
-
-                let process = Process()
-                let executableURL = URL(
-                    fileURLWithPath: "\(app.directory.resourcesDirectory)formatter/.build/release/swift-format"
-                )
-                process.executableURL = executableURL
-
-                process.standardInput = standardInput
-                process.standardOutput = standardOutput
-                process.standardError = standardError
-
-                process.launch()
-                process.waitUntilExit()
-
-                let data = standardOutput.fileHandleForReading.readDataToEndOfFile()
-                guard let output = String(data: data, encoding: .utf8) else { return }
-
-                let errorData = standardError.fileHandleForReading.readDataToEndOfFile()
-                guard let errorOutput = String(data: errorData, encoding: .utf8) else { return }
-                if !errorOutput.isEmpty {
-                    req.logger.info("\(errorOutput)")
-                }
 
                 let encoder = JSONEncoder()
-                let response = try encoder.encode(
-                    FormatResponse(
-                        output: output,
-                        error: errorOutput,
-                        original: request.code
-                    )
-                )
-                if let json = String(data: response, encoding: .utf8) {
-                    ws.send(json)
+                let response = format(source: request.code)
+                if let message = String(data: try encoder.encode(response), encoding: .utf8) {
+                    ws.send(message)
                 }
             } catch {
                 req.logger.error("\(error)")
@@ -79,14 +37,58 @@ func routes(_ app: Application) throws {
             }
         }
     }
+
+    func format(source: String) -> FormatResponse {
+        let errorResponse = FormatResponse(output: "", error: "", original: source)
+        guard let input = source.data(using: .utf8) else {
+            return errorResponse
+        }
+
+        let standardInput = Pipe()
+        let standardOutput = Pipe()
+        let standardError = Pipe()
+
+        let fileHandle = standardInput.fileHandleForWriting
+        fileHandle.write(input)
+        do {
+            try fileHandle.close()
+        } catch {
+            return errorResponse
+        }
+
+        let process = Process()
+        let executableURL = URL(
+            fileURLWithPath: "\(app.directory.resourcesDirectory)formatter/.build/release/swift-format"
+        )
+        process.executableURL = executableURL
+
+        process.standardInput = standardInput
+        process.standardOutput = standardOutput
+        process.standardError = standardError
+
+        process.launch()
+        process.waitUntilExit()
+
+        let data = standardOutput.fileHandleForReading.readDataToEndOfFile()
+        guard let output = String(data: data, encoding: .utf8) else {
+            return errorResponse
+        }
+
+        let errorData = standardError.fileHandleForReading.readDataToEndOfFile()
+        guard let errorOutput = String(data: errorData, encoding: .utf8) else {
+            return errorResponse
+        }
+
+        return FormatResponse(output: output, error: errorOutput, original: source)
+    }
 }
 
-struct FormatRequest: Codable {
+private struct FormatRequest: Codable {
     let code: String
     let configuration: Configuration?
 }
 
-struct FormatResponse: Codable {
+private struct FormatResponse: Codable {
     let output: String
     let error: String
     let original: String
