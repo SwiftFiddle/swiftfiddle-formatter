@@ -13,9 +13,9 @@ export class SwiftFormat {
     return this.connection.readyState === 1;
   }
 
-  format(code) {
+  format(request) {
     const encoder = new TextEncoder();
-    this.connection.send(encoder.encode(JSON.stringify({ code: code })));
+    this.connection.send(encoder.encode(JSON.stringify(request)));
   }
 
   createConnection(endpoint) {
@@ -33,6 +33,7 @@ export class SwiftFormat {
     connection.onopen = () => {
       console.log(`SwiftFormat service connected (${connection.readyState}).`);
       this.onconnect();
+      this.onready();
 
       document.addEventListener("visibilitychange", () => {
         switch (document.visibilityState) {
@@ -61,7 +62,9 @@ export class SwiftFormat {
     };
 
     connection.onmessage = (event) => {
-      this.onresponse(JSON.parse(event.data));
+      if (event.data.trim()) {
+        this.onresponse(JSON.parse(event.data));
+      }
     };
     return connection;
   }

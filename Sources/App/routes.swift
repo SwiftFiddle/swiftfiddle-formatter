@@ -18,7 +18,10 @@ func routes(_ app: Application) throws {
                 let request = try decoder.decode(FormatRequest.self, from: requestData)
 
                 let encoder = JSONEncoder()
-                let response = format(source: request.code)
+                let response = try format(
+                    source: request.code,
+                    configuration: request.configuration
+                )
                 if let message = String(data: try encoder.encode(response), encoding: .utf8) {
                     ws.send(message)
                 }
@@ -29,11 +32,17 @@ func routes(_ app: Application) throws {
         }
     }
 
-    func format(source: String) -> FormatResponse {
-        let errorResponse = FormatResponse(output: "", error: "", original: source)
+    func format(source: String, configuration: Configuration?) throws -> FormatResponse {
         guard let input = source.data(using: .utf8) else {
-            return errorResponse
+            throw Abort(.badRequest)
         }
+
+        let temporaryDirectory = URL(fileURLWithPath: NSTemporaryDirectory())
+        let configurationFile = temporaryDirectory.appendingPathComponent("\(UUID().uuidString).json")
+        let encoder = JSONEncoder()
+        try encoder
+            .encode(configuration ?? Configuration())
+            .write(to: configurationFile)
 
         let standardInput = Pipe()
         let standardOutput = Pipe()
@@ -41,17 +50,14 @@ func routes(_ app: Application) throws {
 
         let fileHandle = standardInput.fileHandleForWriting
         fileHandle.write(input)
-        do {
-            try fileHandle.close()
-        } catch {
-            return errorResponse
-        }
+        try fileHandle.close()
 
         let process = Process()
         let executableURL = URL(
             fileURLWithPath: "\(app.directory.resourcesDirectory)formatter/.build/release/swift-format"
         )
         process.executableURL = executableURL
+        process.arguments = ["--configuration", configurationFile.path]
 
         process.standardInput = standardInput
         process.standardOutput = standardOutput
@@ -62,12 +68,12 @@ func routes(_ app: Application) throws {
 
         let data = standardOutput.fileHandleForReading.readDataToEndOfFile()
         guard let output = String(data: data, encoding: .utf8) else {
-            return errorResponse
+            throw Abort(.internalServerError)
         }
 
         let errorData = standardError.fileHandleForReading.readDataToEndOfFile()
         guard let errorOutput = String(data: errorData, encoding: .utf8) else {
-            return errorResponse
+            throw Abort(.internalServerError)
         }
 
         return FormatResponse(output: output, error: errorOutput, original: source)

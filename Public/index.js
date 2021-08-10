@@ -28,7 +28,7 @@ editor.setOptions({
   useSoftTabs: true,
   autoScrollEditorIntoView: true,
   fontFamily: "Menlo,sans-serif,monospace",
-  fontSize: "11pt",
+  fontSize: "9.5pt",
   showInvisibles: false,
   enableAutoIndent: true,
   enableBasicAutocompletion: true,
@@ -43,6 +43,27 @@ editor.renderer.setOptions({
   showPrintMargin: false,
 });
 
+editor.setValue(`        struct ShippingAddress : Codable  {
+ var recipient: String
+  var streetAddress : String
+   var locality :String
+    var region   :String;var postalCode:String
+    var country:String
+
+    init(     recipient: String,        streetAddress: String,
+locality: String,region: String,postalCode: String,country:String               )
+{
+    self.recipient = recipient
+    self.streetAddress = streetAddress
+        self.locality  = locality
+    self.region        = region;self.postalCode=postalCode
+        guard country.count == 2, country == country.uppercased() else { fatalError("invalid country code") }
+    self.country=country}}
+
+let applePark = ShippingAddress(recipient:"Apple, Inc.", streetAddress:"1 Apple Park Way", locality:"Cupertino", region:"CA", postalCode:"95014", country:"US")
+`);
+editor.clearSelection();
+
 const result = ace.edit("result-container");
 result.setTheme("ace/theme/xcode");
 result.session.setMode("ace/mode/swift");
@@ -52,7 +73,7 @@ result.setOptions({
   useSoftTabs: true,
   autoScrollEditorIntoView: true,
   fontFamily: "Menlo,sans-serif,monospace",
-  fontSize: "11pt",
+  fontSize: "9.5pt",
   showInvisibles: false,
   enableAutoIndent: true,
   enableBasicAutocompletion: true,
@@ -68,9 +89,21 @@ result.renderer.setOptions({
   showPrintMargin: false,
 });
 
-const formatterService = new SwiftFormat(
-  "wss://formatter.swiftfiddle.com/api/ws"
-);
+let endpoint;
+if (window.location.protocol === "https:") {
+  endpoint = "wss:";
+} else {
+  endpoint = "ws:";
+}
+endpoint += "//" + window.location.host;
+endpoint += window.location.pathname + "/api/ws";
+
+const formatterService = new SwiftFormat(endpoint);
+formatterService.onready = () => {
+  document.getElementById("run-button").classList.remove("disabled");
+  sendFormatRequest();
+};
+
 formatterService.onresponse = (response) => {
   if (response) {
     if (response.output) {
@@ -88,8 +121,74 @@ formatterService.onresponse = (response) => {
 };
 
 const updateOnTextChange = debounce(() => {
-  formatterService.format(editor.getValue());
+  sendFormatRequest();
 }, 400);
 editor.on("change", (change, editor) => {
-  updateOnTextChange(editor);
+  updateOnTextChange();
 });
+
+document.querySelectorAll(".dropdown-list-item").forEach((listItem) => {
+  listItem.addEventListener("click", () => {
+    for (let sibling of listItem.parentNode.children) {
+      sibling.classList.remove("active-tick");
+    }
+    listItem.classList.add("active-tick");
+
+    listItem.parentNode.previousElementSibling.innerText =
+      listItem.querySelector(".dropdown-item").innerText;
+
+    sendFormatRequest();
+  });
+});
+
+const form = document.querySelector("form");
+form.addEventListener("input", () => {
+  sendFormatRequest();
+});
+
+document.getElementById("run-button").addEventListener("click", () => {
+  sendFormatRequest();
+});
+
+function sendFormatRequest() {
+  document.getElementById("run-button-icon").classList.add("d-none");
+  document.getElementById("run-button-spinner").classList.remove("d-none");
+  setTimeout(() => {
+    document.getElementById("run-button-icon").classList.remove("d-none");
+    document.getElementById("run-button-spinner").classList.add("d-none");
+  }, 600);
+
+  formatterService.format({
+    code: editor.getValue(),
+    configuration: buildConfiguration(),
+  });
+}
+
+function buildConfiguration() {
+  const configuration = {};
+
+  [...form.getElementsByTagName("input")].forEach((input) => {
+    if (input.id === "indentationCount") {
+      if (input.value) {
+        const indent = document.getElementById("indentation").innerText;
+        if (indent) {
+          const indentation = {};
+          indentation[indent.toLowerCase()] = parseInt(input.value);
+          configuration["indentation"] = indentation;
+        }
+      }
+    } else if (input.type === "checkbox") {
+      configuration[input.id] = input.checked;
+    } else {
+      if (input.value) {
+        configuration[input.id] = parseInt(input.value);
+      }
+    }
+  });
+  const accessLevel = document.getElementById(
+    "fileScopedDeclarationPrivacy"
+  ).textContent;
+  configuration["fileScopedDeclarationPrivacy"] = { accessLevel: accessLevel };
+
+  return configuration;
+}
