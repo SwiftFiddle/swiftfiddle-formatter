@@ -113,32 +113,32 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="maximumBlankLines" class="col-sm-8 col-form-label-sm">Maximum Blank Lines</label>
-          <div class="col-sm-4">
+          <label for="maximumBlankLines" class="col-8 col-form-label-sm">Maximum Blank Lines</label>
+          <div class="col-4">
             <input id="maximumBlankLines" class="form-control form-control-sm" type="number" pattern="[0-9]*"
               inputmode="numeric" placeholder="1" aria-label="Maximum Blank Lines">
           </div>
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="lineLength" class="col-sm-8 col-form-label-sm">Line Length</label>
-          <div class="col-sm-4">
+          <label for="lineLength" class="col-8 col-form-label-sm">Line Length</label>
+          <div class="col-4">
             <input id="lineLength" class="form-control form-control-sm" type="number" pattern="[0-9]*"
               inputmode="numeric" placeholder="100" aria-label="Line Length">
           </div>
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="tabWidth" class="col-sm-8 col-form-label-sm">Tab Width</label>
-          <div class="col-sm-4">
+          <label for="tabWidth" class="col-8 col-form-label-sm">Tab Width</label>
+          <div class="col-4">
             <input id="tabWidth" class="form-control form-control-sm" type="number" pattern="[0-9]*" inputmode="numeric"
               placeholder="8" aria-label="Tab Width">
           </div>
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="indentation" class="col-sm-6 col-form-label-sm">Indentation</label>
-          <div class="col-sm-5">
+          <label for="indentation" class="col-6 col-form-label-sm">Indentation</label>
+          <div class="col-5">
             <div class="input-group input-group-sm mb-3">
               <button id="indentation" class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button"
                 data-bs-toggle="dropdown" aria-expanded="false">Spaces</button>
@@ -153,10 +153,10 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="respectsExistingLineBreaks" class="col-sm-8 col-form-label-sm">
+          <label for="respectsExistingLineBreaks" class="col-9 col-form-label-sm">
             Respects Existing Line Breaks
           </label>
-          <div class="col-sm-2 d-table">
+          <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle pb-1">
               <input id="respectsExistingLineBreaks" class="form-check-input" type="checkbox" checked>
             </div>
@@ -164,10 +164,10 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="lineBreakBeforeControlFlowKeywords" class="col-sm-8 col-form-label-sm">
+          <label for="lineBreakBeforeControlFlowKeywords" class="col-9 col-form-label-sm">
             Line Break Before Control Flow Keywords
           </label>
-          <div class="col-sm-2 d-table">
+          <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle pb-1">
               <input id="lineBreakBeforeControlFlowKeywords" class="form-check-input" type="checkbox">
             </div>
@@ -175,10 +175,10 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="lineBreakBeforeEachArgument" class="col-sm-8 col-form-label-sm">
+          <label for="lineBreakBeforeEachArgument" class="col-9 col-form-label-sm">
             Line Break Before Each Argument
           </label>
-          <div class="col-sm-2 d-table">
+          <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle pb-1">
               <input id="lineBreakBeforeEachArgument" class="form-check-input" type="checkbox">
             </div>
@@ -186,10 +186,10 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="lineBreakBeforeEachGenericRequirement" class="col-sm-8 col-form-label-sm">
+          <label for="lineBreakBeforeEachGenericRequirement" class="col-9 col-form-label-sm">
             Line Break Before Each Generic Requirement
           </label>
-          <div class="col-sm-2 d-table">
+          <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle pb-1">
               <input id="lineBreakBeforeEachGenericRequirement" class="form-check-input" type="checkbox">
             </div>
@@ -197,10 +197,10 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="prioritizeKeepingFunctionOutputTogether" class="col-sm-8 col-form-label-sm">
+          <label for="prioritizeKeepingFunctionOutputTogether" class="col-9 col-form-label-sm">
             Prioritize Keeping Function Output Together
           </label>
-          <div class="col-sm-2 d-table">
+          <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle pb-1">
               <input id="prioritizeKeepingFunctionOutputTogether" class="form-check-input" type="checkbox">
             </div>
@@ -208,10 +208,10 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="indentConditionalCompilationBlocks" class="col-sm-8 col-form-label-sm">
+          <label for="indentConditionalCompilationBlocks" class="col-9 col-form-label-sm">
             Indent Conditional Compilation Blocks
           </label>
-          <div class="col-sm-2 d-table">
+          <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle">
               <input id="indentConditionalCompilationBlocks" class="form-check-input" type="checkbox" checked>
             </div>
@@ -219,10 +219,10 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="lineBreakAroundMultilineExpressionChainComponents" class="col-sm-8 col-form-label-sm">
+          <label for="lineBreakAroundMultilineExpressionChainComponents" class="col-9 col-form-label-sm">
             Line Break Around Multiline Expression Chain Components
           </label>
-          <div class="col-sm-2 d-table">
+          <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle">
               <input id="lineBreakAroundMultilineExpressionChainComponents" class="form-check-input" type="checkbox">
             </div>
@@ -230,10 +230,10 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="fileScopedDeclarationPrivacy" class="col-sm-8 col-form-label-sm">
+          <label for="fileScopedDeclarationPrivacy" class="col-8 col-form-label-sm">
             File Scoped Declaration Privacy
           </label>
-          <div class="col-sm-4">
+          <div class="col-4">
             <button id="fileScopedDeclarationPrivacy" class="btn btn-sm btn-outline-secondary dropdown-toggle w-100"
               type="button" data-bs-toggle="dropdown" aria-expanded="false">private</button>
             <ul class="dropdown-menu">
@@ -244,10 +244,10 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="indentSwitchCaseLabels" class="col-sm-8 col-form-label-sm">
+          <label for="indentSwitchCaseLabels" class="col-9 col-form-label-sm">
             Indent Switch Case Labels
           </label>
-          <div class="col-sm-2 d-table">
+          <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle">
               <input id="indentSwitchCaseLabels" class="form-check-input" type="checkbox">
             </div>
@@ -259,10 +259,10 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="AllPublicDeclarationsHaveDocumentation" class="col-sm-8 col-form-label-sm">
+          <label for="AllPublicDeclarationsHaveDocumentation" class="col-9 col-form-label-sm">
             All Public Declarations Have Documentation
           </label>
-          <div class="col-sm-2 d-table">
+          <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle">
               <input id="AllPublicDeclarationsHaveDocumentation" class="form-check-input" type="checkbox">
             </div>
@@ -270,10 +270,10 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="AlwaysUseLowerCamelCase" class="col-sm-8 col-form-label-sm">
+          <label for="AlwaysUseLowerCamelCase" class="col-9 col-form-label-sm">
             Always Use Lower Camel Case
           </label>
-          <div class="col-sm-2 d-table">
+          <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle">
               <input id="AlwaysUseLowerCamelCase" class="form-check-input" type="checkbox" checked>
             </div>
@@ -281,10 +281,10 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="AmbiguousTrailingClosureOverload" class="col-sm-8 col-form-label-sm">
+          <label for="AmbiguousTrailingClosureOverload" class="col-9 col-form-label-sm">
             Ambiguous Trailing Closure Overload
           </label>
-          <div class="col-sm-2 d-table">
+          <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle">
               <input id="AmbiguousTrailingClosureOverload" class="form-check-input" type="checkbox" checked>
             </div>
@@ -292,10 +292,10 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="BeginDocumentationCommentWithOneLineSummary" class="col-sm-8 col-form-label-sm">
+          <label for="BeginDocumentationCommentWithOneLineSummary" class="col-9 col-form-label-sm">
             Begin Documentation Comment With One Line Summary
           </label>
-          <div class="col-sm-2 d-table">
+          <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle">
               <input id="BeginDocumentationCommentWithOneLineSummary" class="form-check-input" type="checkbox">
             </div>
@@ -303,10 +303,10 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="DoNotUseSemicolons" class="col-sm-8 col-form-label-sm">
+          <label for="DoNotUseSemicolons" class="col-9 col-form-label-sm">
             Do Not Use Semicolons
           </label>
-          <div class="col-sm-2 d-table">
+          <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle">
               <input id="DoNotUseSemicolons" class="form-check-input" type="checkbox" checked>
             </div>
@@ -314,10 +314,10 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="DontRepeatTypeInStaticProperties" class="col-sm-8 col-form-label-sm">
+          <label for="DontRepeatTypeInStaticProperties" class="col-9 col-form-label-sm">
             Dont Repeat Type In Static Properties
           </label>
-          <div class="col-sm-2 d-table">
+          <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle">
               <input id="DontRepeatTypeInStaticProperties" class="form-check-input" type="checkbox" checked>
             </div>
@@ -325,10 +325,10 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="FileScopedDeclarationPrivacy" class="col-sm-8 col-form-label-sm">
+          <label for="FileScopedDeclarationPrivacy" class="col-9 col-form-label-sm">
             File Scoped Declaration Privacy
           </label>
-          <div class="col-sm-2 d-table">
+          <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle">
               <input id="FileScopedDeclarationPrivacy" class="form-check-input" type="checkbox" checked>
             </div>
@@ -336,10 +336,10 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="FullyIndirectEnum" class="col-sm-8 col-form-label-sm">
+          <label for="FullyIndirectEnum" class="col-9 col-form-label-sm">
             Fully Indirect Enum
           </label>
-          <div class="col-sm-2 d-table">
+          <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle">
               <input id="FullyIndirectEnum" class="form-check-input" type="checkbox" checked>
             </div>
@@ -347,10 +347,10 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="GroupNumericLiterals" class="col-sm-8 col-form-label-sm">
+          <label for="GroupNumericLiterals" class="col-9 col-form-label-sm">
             Group Numeric Literals
           </label>
-          <div class="col-sm-2 d-table">
+          <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle">
               <input id="GroupNumericLiterals" class="form-check-input" type="checkbox" checked>
             </div>
@@ -358,10 +358,10 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="IdentifiersMustBeASCII" class="col-sm-8 col-form-label-sm">
+          <label for="IdentifiersMustBeASCII" class="col-9 col-form-label-sm">
             Identifiers Must Be ASCII
           </label>
-          <div class="col-sm-2 d-table">
+          <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle">
               <input id="IdentifiersMustBeASCII" class="form-check-input" type="checkbox" checked>
             </div>
@@ -369,10 +369,10 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="NeverForceUnwrap" class="col-sm-8 col-form-label-sm">
+          <label for="NeverForceUnwrap" class="col-9 col-form-label-sm">
             Never Force Unwrap
           </label>
-          <div class="col-sm-2 d-table">
+          <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle">
               <input id="NeverForceUnwrap" class="form-check-input" type="checkbox">
             </div>
@@ -380,10 +380,10 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="NeverUseForceTry" class="col-sm-8 col-form-label-sm">
+          <label for="NeverUseForceTry" class="col-9 col-form-label-sm">
             Never Use Force Try
           </label>
-          <div class="col-sm-2 d-table">
+          <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle">
               <input id="NeverUseForceTry" class="form-check-input" type="checkbox">
             </div>
@@ -391,10 +391,10 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="NeverUseImplicitlyUnwrappedOptionals" class="col-sm-8 col-form-label-sm">
+          <label for="NeverUseImplicitlyUnwrappedOptionals" class="col-9 col-form-label-sm">
             Never Use Implicitly Unwrapped Optionals
           </label>
-          <div class="col-sm-2 d-table">
+          <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle">
               <input id="NeverUseImplicitlyUnwrappedOptionals" class="form-check-input" type="checkbox">
             </div>
@@ -402,10 +402,10 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="NoAccessLevelOnExtensionDeclaration" class="col-sm-8 col-form-label-sm">
+          <label for="NoAccessLevelOnExtensionDeclaration" class="col-9 col-form-label-sm">
             No Access Level On Extension Declaration
           </label>
-          <div class="col-sm-2 d-table">
+          <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle">
               <input id="NoAccessLevelOnExtensionDeclaration" class="form-check-input" type="checkbox" checked>
             </div>
@@ -413,10 +413,10 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="NoBlockComments" class="col-sm-8 col-form-label-sm">
+          <label for="NoBlockComments" class="col-9 col-form-label-sm">
             No Block Comments
           </label>
-          <div class="col-sm-2 d-table">
+          <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle">
               <input id="NoBlockComments" class="form-check-input" type="checkbox" checked>
             </div>
@@ -424,10 +424,10 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="NoCasesWithOnlyFallthrough" class="col-sm-8 col-form-label-sm">
+          <label for="NoCasesWithOnlyFallthrough" class="col-9 col-form-label-sm">
             No Cases With Only Fallthrough
           </label>
-          <div class="col-sm-2 d-table">
+          <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle">
               <input id="NoCasesWithOnlyFallthrough" class="form-check-input" type="checkbox" checked>
             </div>
@@ -435,10 +435,10 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="NoEmptyTrailingClosureParentheses" class="col-sm-8 col-form-label-sm">
+          <label for="NoEmptyTrailingClosureParentheses" class="col-9 col-form-label-sm">
             No Empty Trailing Closure Parentheses
           </label>
-          <div class="col-sm-2 d-table">
+          <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle">
               <input id="NoEmptyTrailingClosureParentheses" class="form-check-input" type="checkbox" checked>
             </div>
@@ -446,10 +446,10 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="NoLabelsInCasePatterns" class="col-sm-8 col-form-label-sm">
+          <label for="NoLabelsInCasePatterns" class="col-9 col-form-label-sm">
             No Labels In Case Patterns
           </label>
-          <div class="col-sm-2 d-table">
+          <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle">
               <input id="NoLabelsInCasePatterns" class="form-check-input" type="checkbox" checked>
             </div>
@@ -457,10 +457,10 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="NoLeadingUnderscores" class="col-sm-8 col-form-label-sm">
+          <label for="NoLeadingUnderscores" class="col-9 col-form-label-sm">
             No Leading Underscores
           </label>
-          <div class="col-sm-2 d-table">
+          <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle">
               <input id="NoLeadingUnderscores" class="form-check-input" type="checkbox">
             </div>
@@ -468,10 +468,10 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="NoParensAroundConditions" class="col-sm-8 col-form-label-sm">
+          <label for="NoParensAroundConditions" class="col-9 col-form-label-sm">
             No Parens Around Conditions
           </label>
-          <div class="col-sm-2 d-table">
+          <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle">
               <input id="NoParensAroundConditions" class="form-check-input" type="checkbox" checked>
             </div>
@@ -479,10 +479,10 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="NoVoidReturnOnFunctionSignature" class="col-sm-8 col-form-label-sm">
+          <label for="NoVoidReturnOnFunctionSignature" class="col-9 col-form-label-sm">
             No Void Return On Function Signature
           </label>
-          <div class="col-sm-2 d-table">
+          <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle">
               <input id="NoVoidReturnOnFunctionSignature" class="form-check-input" type="checkbox" checked>
             </div>
@@ -490,10 +490,10 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="OneCasePerLine" class="col-sm-8 col-form-label-sm">
+          <label for="OneCasePerLine" class="col-9 col-form-label-sm">
             One Case Per Line
           </label>
-          <div class="col-sm-2 d-table">
+          <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle">
               <input id="OneCasePerLine" class="form-check-input" type="checkbox" checked>
             </div>
@@ -501,10 +501,10 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="OneVariableDeclarationPerLine" class="col-sm-8 col-form-label-sm">
+          <label for="OneVariableDeclarationPerLine" class="col-9 col-form-label-sm">
             One Variable Declaration Per Line
           </label>
-          <div class="col-sm-2 d-table">
+          <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle">
               <input id="OneVariableDeclarationPerLine" class="form-check-input" type="checkbox" checked>
             </div>
@@ -512,10 +512,10 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="OnlyOneTrailingClosureArgument" class="col-sm-8 col-form-label-sm">
+          <label for="OnlyOneTrailingClosureArgument" class="col-9 col-form-label-sm">
             Only One Trailing Closure Argument
           </label>
-          <div class="col-sm-2 d-table">
+          <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle">
               <input id="OnlyOneTrailingClosureArgument" class="form-check-input" type="checkbox" checked>
             </div>
@@ -523,10 +523,10 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="OrderedImports" class="col-sm-8 col-form-label-sm">
+          <label for="OrderedImports" class="col-9 col-form-label-sm">
             Ordered Imports
           </label>
-          <div class="col-sm-2 d-table">
+          <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle">
               <input id="OrderedImports" class="form-check-input" type="checkbox" checked>
             </div>
@@ -534,10 +534,10 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="ReturnVoidInsteadOfEmptyTuple" class="col-sm-8 col-form-label-sm">
+          <label for="ReturnVoidInsteadOfEmptyTuple" class="col-9 col-form-label-sm">
             Return Void Instead Of Empty Tuple
           </label>
-          <div class="col-sm-2 d-table">
+          <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle">
               <input id="ReturnVoidInsteadOfEmptyTuple" class="form-check-input" type="checkbox" checked>
             </div>
@@ -545,10 +545,10 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="UseLetInEveryBoundCaseVariable" class="col-sm-8 col-form-label-sm">
+          <label for="UseLetInEveryBoundCaseVariable" class="col-9 col-form-label-sm">
             Use Let In Every Bound Case Variable
           </label>
-          <div class="col-sm-2 d-table">
+          <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle">
               <input id="UseLetInEveryBoundCaseVariable" class="form-check-input" type="checkbox" checked>
             </div>
@@ -556,10 +556,10 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="UseShorthandTypeNames" class="col-sm-8 col-form-label-sm">
+          <label for="UseShorthandTypeNames" class="col-9 col-form-label-sm">
             Use Shorthand Type Names
           </label>
-          <div class="col-sm-2 d-table">
+          <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle">
               <input id="UseShorthandTypeNames" class="form-check-input" type="checkbox" checked>
             </div>
@@ -567,10 +567,10 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="UseSingleLinePropertyGetter" class="col-sm-8 col-form-label-sm">
+          <label for="UseSingleLinePropertyGetter" class="col-9 col-form-label-sm">
             Use Single Line Property Getter
           </label>
-          <div class="col-sm-2 d-table">
+          <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle">
               <input id="UseSingleLinePropertyGetter" class="form-check-input" type="checkbox" checked>
             </div>
@@ -578,10 +578,10 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="UseSynthesizedInitializer" class="col-sm-8 col-form-label-sm">
+          <label for="UseSynthesizedInitializer" class="col-9 col-form-label-sm">
             Use Synthesized Initializer
           </label>
-          <div class="col-sm-2 d-table">
+          <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle">
               <input id="UseSynthesizedInitializer" class="form-check-input" type="checkbox" checked>
             </div>
@@ -589,10 +589,10 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
-          <label for="UseTripleSlashForDocumentationComments" class="col-sm-8 col-form-label-sm">
+          <label for="UseTripleSlashForDocumentationComments" class="col-9 col-form-label-sm">
             Use Triple Slash For Documentation Comments
           </label>
-          <div class="col-sm-2 d-table">
+          <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle">
               <input id="UseTripleSlashForDocumentationComments" class="form-check-input" type="checkbox" checked>
             </div>
@@ -600,10 +600,10 @@
         </div>
 
         <div class="row mb-2 pb-5 justify-content-between">
-          <label for="ValidateDocumentationComments" class="col-sm-8 col-form-label-sm">
+          <label for="ValidateDocumentationComments" class="col-9 col-form-label-sm">
             Validate Documentation Comments
           </label>
-          <div class="col-sm-2 d-table">
+          <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle">
               <input id="ValidateDocumentationComments" class="form-check-input" type="checkbox">
             </div>
