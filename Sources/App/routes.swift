@@ -108,6 +108,8 @@ func routes(_ app: Application) throws {
         process.launch()
         process.waitUntilExit()
 
+        try? FileManager().removeItem(at: configurationFile)
+
         let stdoutData = standardOutput.fileHandleForReading.readDataToEndOfFile()
         guard let stdout = String(data: stdoutData, encoding: .utf8) else {
             throw Abort(.internalServerError)
