@@ -142,8 +142,8 @@ document.querySelectorAll(".dropdown-list-item").forEach((listItem) => {
     }
     listItem.classList.add("active-tick");
 
-    listItem.parentNode.previousElementSibling.innerText =
-      listItem.querySelector(".dropdown-item").innerText;
+    listItem.parentNode.previousElementSibling.textContent =
+      listItem.querySelector(".dropdown-item").textContent;
 
     sendFormatRequest();
   });
@@ -216,7 +216,7 @@ function buildConfiguration() {
   [...form.getElementsByTagName("input")].forEach((input) => {
     if (input.id === "indentationCount") {
       if (input.value) {
-        const indent = document.getElementById("indentation").innerText;
+        const indent = document.getElementById("indentation").textContent;
         if (indent) {
           const indentation = {};
           indentation[indent.toLowerCase()] = parseInt(input.value);
@@ -247,7 +247,7 @@ function resetConfiguration() {
   [...form.getElementsByTagName("input")].forEach((input) => {
     if (input.id === "indentationCount") {
       input.value = null;
-      document.getElementById("indentation").innerText = "Spaces";
+      document.getElementById("indentation").textContent = "Spaces";
     } else if (input.type === "checkbox") {
       if (configuration[input.id]) {
         input.checked = configuration[input.id];
@@ -259,7 +259,8 @@ function resetConfiguration() {
     }
   });
 
-  document.getElementById("fileScopedDeclarationPrivacy").innerText = "private";
+  document.getElementById("fileScopedDeclarationPrivacy").textContent =
+    "private";
 
   document.querySelectorAll(".dropdown-list-item").forEach((listItem) => {
     for (let sibling of listItem.parentNode.children) {
