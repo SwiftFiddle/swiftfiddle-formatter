@@ -16,7 +16,11 @@ import {
   faCheckCircle,
   faAt,
 } from "@fortawesome/pro-regular-svg-icons";
-import { faSlidersV, faRulerTriangle } from "@fortawesome/pro-light-svg-icons";
+import {
+  faSlidersV,
+  faRulerTriangle,
+  faMonitorHeartRate,
+} from "@fortawesome/pro-light-svg-icons";
 import { faSwift, faGithub } from "@fortawesome/free-brands-svg-icons";
 
 config.searchPseudoElements = true;
@@ -36,6 +40,7 @@ library.add(
 
   faSlidersV,
   faRulerTriangle,
+  faMonitorHeartRate,
 
   faSwift,
   faGithub
