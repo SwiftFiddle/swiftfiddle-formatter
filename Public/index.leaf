@@ -42,9 +42,9 @@
           <span id="run-button-spinner" class="fas fa-circle-notch fa-spin fa-fw ms-2 d-none"></span>
           <span class="mx-2">Run</span>
         </button>
-        <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Configuration">
+        <span data-bs-toggle="offcanvas" data-bs-target="#configuration-offcanvas" aria-label="Configuration">
           <button type="button" id="configuration-button" class="btn btn-outline-primary btn-sm rounded-circle p-0 ms-1"
-            data-bs-toggle="offcanvas" data-bs-target="#configuration-offcanvas" aria-label="Configuration">
+            data-bs-toggle="tooltip" data-bs-placement="bottom" title="Configuration">
             <span class="fas fa-cog fa-fw"></span>
           </button>
         </span>
