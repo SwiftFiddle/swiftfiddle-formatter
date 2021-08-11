@@ -68,6 +68,7 @@ module.exports = {
     }),
     new CopyWebbackPlugin({
       patterns: [
+        { from: "./Public/images", to: "images" },
         { from: "./Public/favicons", to: "favicons" },
         { from: "./Public/apple-touch-icon.png", to: "apple-touch-icon.png" },
         { from: "./Public/favicon.ico", to: "favicon.ico" },
