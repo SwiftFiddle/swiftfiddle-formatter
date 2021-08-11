@@ -16,7 +16,7 @@ import "codemirror/addon/lint/lint";
 import "./js/logger.js";
 import "./js/icon.js";
 
-import { Tooltip } from "bootstrap";
+import { Popover, Tooltip } from "bootstrap";
 import { SwiftFormat } from "./js/swift_format.js";
 import { Snackbar } from "./js/snackbar.js";
 import { Defaults } from "./js/defaults.js";
@@ -66,6 +66,16 @@ var result = CodeMirror.fromTextArea(
 result.setSize("100%", "100%");
 
 document.getElementById("clear-button").classList.remove("disabled");
+
+const aboutButton = document.getElementById("about-button");
+const popoverContent = document.getElementById("about-popover");
+const popover = new Popover(aboutButton, {
+  title: "",
+  trigger: "manual",
+  html: true,
+  content: popoverContent,
+  container: "body",
+});
 
 let endpoint;
 if (window.location.protocol === "https:") {
@@ -153,6 +163,22 @@ document.getElementById("clear-button").addEventListener("click", () => {
   editor.clearHistory();
   result.setValue("");
   result.clearHistory();
+});
+
+aboutButton.addEventListener("show.bs.popover", () => {
+  popoverContent.classList.remove("d-none");
+});
+
+aboutButton.addEventListener("click", (event) => {
+  console.log(popover);
+  popover.toggle();
+  event.stopPropagation();
+});
+
+document.body.addEventListener("click", (event) => {
+  if (event.target !== aboutButton && !event.target.closest(".popover")) {
+    popover.hide();
+  }
 });
 
 document.getElementById("reset-config-button").addEventListener("click", () => {

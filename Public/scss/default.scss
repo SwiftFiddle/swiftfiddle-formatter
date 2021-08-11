@@ -1,3 +1,4 @@
+$popover-max-width: 400px;
 $toast-max-width: 400px;
 
 @import "bootstrap/scss/functions";
@@ -17,6 +18,7 @@ $toast-max-width: 400px;
 @import "bootstrap/scss/close";
 @import "bootstrap/scss/toasts";
 @import "bootstrap/scss/tooltip";
+@import "bootstrap/scss/popover";
 @import "bootstrap/scss/offcanvas";
 
 @import "bootstrap/scss/utilities/api";

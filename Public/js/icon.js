@@ -7,6 +7,7 @@ import {
   faEraser,
   faCog,
   faUndo,
+  faQuestion,
   faExclamationTriangle,
 } from "@fortawesome/pro-solid-svg-icons";
 import {
@@ -25,6 +26,7 @@ library.add(
   faEraser,
   faCog,
   faUndo,
+  faQuestion,
   faExclamationTriangle,
 
   faCheck,

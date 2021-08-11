@@ -39,14 +39,20 @@
           <span id="run-button-spinner" class="fas fa-circle-notch fa-spin fa-fw ms-2 d-none"></span>
           <span class="mx-2">Run</span>
         </button>
-        <button type="button" id="clear-button" class="btn btn-outline-primary btn-sm rounded-circle p-0 ms-1 disabled"
-          data-bs-toggle="tooltip" data-bs-placement="bottom" title="Clear" aria-label="Clear">
-          <span class="fas fa-eraser fa-fw"></span>
-        </button>
         <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Configuration">
           <button type="button" id="configuration-button" class="btn btn-outline-primary btn-sm rounded-circle p-0 ms-1"
             data-bs-toggle="offcanvas" data-bs-target="#configuration-offcanvas" aria-label="Configuration">
             <span class="fas fa-cog fa-fw"></span>
+          </button>
+        </span>
+        <button type="button" id="clear-button" class="btn btn-outline-primary btn-sm rounded-circle p-0 ms-1 disabled"
+          data-bs-toggle="tooltip" data-bs-placement="bottom" title="Clear" aria-label="Clear">
+          <span class="fas fa-eraser fa-fw"></span>
+        </button>
+        <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="About">
+          <button type="button" id="about-button" class="btn btn-outline-primary btn-sm rounded-circle p-0 ms-1"
+            aria-label="About">
+            <span class="fas fa-question fa-fw"></span>
           </button>
         </span>
       </div>
@@ -86,10 +92,16 @@
         data-bs-toggle="tooltip" title="Reset to default" aria-label="Reset to default">
         <span class="fas fa-undo fa-fw"></span>
       </button>
-      <button id="copy-config-button" class="btn btn-outline-primary btn-sm rounded-circle p-0 ms-2 me-auto"
-        type="button" data-bs-toggle="tooltip" title="Copy config JSON" aria-label="Copy config JSON">
+      <button id="copy-config-button" class="btn btn-outline-primary btn-sm rounded-circle p-0 ms-2" type="button"
+        data-bs-toggle="tooltip" title="Copy config JSON" aria-label="Copy config JSON">
         <span class="far fa-clipboard fa-fw"></span>
       </button>
+      <a class="btn btn-outline-primary btn-sm rounded-circle p-0 ms-2 me-auto"
+        href="https://github.com/apple/swift-format" target="_blank" rel="nofollow noopener noreferrer"
+        data-bs-toggle="tooltip" data-bs-placement="bottom" title="Visit swift-format repo"
+        aria-label="Visit swift-format repo">
+        <span class="fab fa-github fa-fw" style="width: 1rem; height: 100%;"></span>
+      </a>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
       </button>
     </div>
@@ -600,6 +612,27 @@
       </form>
     </div>
   </div>
+  </div>
+
+  <!-- About Popover -->
+  <div id="about-popover" class="d-none">
+    <div class="row">
+      <div class="col">
+        <div class="text-dark">
+          <p>Online playground for <a href="https://github.com/apple/swift-format" target="_blank"
+              rel="nofollow noopener noreferrer"><code>swift-format</code></a>. You can quickly try <a
+              href="https://github.com/apple/swift-format/blob/main/Documentation/Configuration.md" target="_blank"
+              rel="nofollow noopener noreferrer">various
+              configurations</a> of <code>swift-format</code> online.
+          </p>
+          <p>For more information about <code>swift-format</code>, please see the repository.<br>
+            <a href="https://github.com/apple/swift-format" target="_blank"
+              rel="nofollow noopener noreferrer">apple/swift-format
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Toasts -->
