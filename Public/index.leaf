@@ -52,12 +52,10 @@
           data-bs-toggle="tooltip" data-bs-placement="bottom" title="Clear" aria-label="Clear">
           <span class="fas fa-eraser fa-fw"></span>
         </button>
-        <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="About">
-          <button type="button" id="about-button" class="btn btn-outline-primary btn-sm rounded-circle p-0 ms-1"
-            aria-label="About">
-            <span class="fas fa-question fa-fw"></span>
-          </button>
-        </span>
+        <button type="button" id="about-button" class="btn btn-outline-primary btn-sm rounded-circle p-0 ms-1"
+          aria-label="About" data-bs-toggle="tooltip" data-bs-placement="bottom" title="About">
+          <span class="fas fa-question fa-fw"></span>
+        </button>
       </div>
     </header>
 
