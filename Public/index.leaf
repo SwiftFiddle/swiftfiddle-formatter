@@ -44,18 +44,22 @@
         </button>
         <span data-bs-toggle="offcanvas" data-bs-target="#configuration-offcanvas" aria-label="Configuration">
           <button type="button" id="configuration-button" class="btn btn-outline-primary btn-sm rounded-circle p-0 ms-1"
-            data-bs-toggle="tooltip" data-bs-placement="bottom" title="Configuration">
+            data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-container="\#configuration-button"
+            title="Configuration">
             <span class="fas fa-cog fa-fw"></span>
           </button>
         </span>
         <button type="button" id="clear-button" class="btn btn-outline-primary btn-sm rounded-circle p-0 ms-1 disabled"
-          data-bs-toggle="tooltip" data-bs-placement="bottom" title="Clear" aria-label="Clear">
+          data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-container="\#clear-button" title="Clear"
+          aria-label="Clear">
           <span class="fas fa-eraser fa-fw"></span>
         </button>
-        <button type="button" id="about-button" class="btn btn-outline-primary btn-sm rounded-circle p-0 ms-1"
-          aria-label="About" data-bs-toggle="tooltip" data-bs-placement="bottom" title="About">
-          <span class="fas fa-question fa-fw"></span>
-        </button>
+        <span data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-container="\#about-button" title="About">
+          <button type="button" id="about-button" class="btn btn-outline-primary btn-sm rounded-circle p-0 ms-1"
+            aria-label="About">
+            <span class="fas fa-question fa-fw"></span>
+          </button>
+        </span>
       </div>
     </header>
 
@@ -93,17 +97,17 @@
         <span class="fas fa-cog fa-fw me-2"></span>Configuration
       </h5>
       <button id="reset-config-button" class="btn btn-outline-primary btn-sm rounded-circle p-0 ms-2" type="button"
-        data-bs-toggle="tooltip" title="Reset to default" aria-label="Reset to default">
+        data-bs-toggle="tooltip" data-bs-placement="bottom" title="Reset to default" aria-label="Reset to default">
         <span class="fas fa-undo fa-fw"></span>
       </button>
       <button id="copy-config-button" class="btn btn-outline-primary btn-sm rounded-circle p-0 ms-2" type="button"
-        data-bs-toggle="tooltip" title="Copy config JSON" aria-label="Copy config JSON">
+        data-bs-toggle="tooltip" data-bs-placement="bottom" title="Copy config JSON" aria-label="Copy config JSON">
         <span class="far fa-clipboard fa-fw"></span>
       </button>
-      <a class="btn btn-outline-primary btn-sm rounded-circle p-0 ms-2 me-auto"
+      <a id="swift-format-repo-button" class="btn btn-outline-primary btn-sm rounded-circle p-0 ms-2 me-auto"
         href="https://github.com/apple/swift-format" target="_blank" rel="nofollow noopener noreferrer"
-        data-bs-toggle="tooltip" data-bs-placement="bottom" title="Visit swift-format repo"
-        aria-label="Visit swift-format repo">
+        data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-container="\#swift-format-repo-button"
+        title="Visit swift-format repo" aria-label="Visit swift-format repo">
         <span class="fab fa-github fa-fw" style="width: 1rem; height: 100%;"></span>
       </a>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
