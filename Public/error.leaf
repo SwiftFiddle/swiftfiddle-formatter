@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta property="og:title" content="Swift Online Playground">
+  <meta property="og:title" content="Online Swift code formatter">
   <meta property="og:description"
     content="Online Swift code formatter - format a Swift code, making it readable and pretty, with the proper indentation." />
   <meta name="description"
