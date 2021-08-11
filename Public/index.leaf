@@ -60,10 +60,10 @@
 
     <main class="row bg-light flex-fill fill d-flex g-0">
       <div class="col-md-6 border-top">
-        <textarea id="editor-container" class="h-100"></textarea>
+        <textarea id="editor-container" class="h-100 d-none"></textarea>
       </div>
       <div class="col-md-6 border-top">
-        <textarea id="result-container" class="h-100"></textarea>
+        <textarea id="result-container" class="h-100 d-none"></textarea>
       </div>
     </main>
 
