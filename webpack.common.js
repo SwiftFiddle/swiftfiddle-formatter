@@ -76,4 +76,15 @@ module.exports = {
       ],
     }),
   ],
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        codemirror: {
+          test: /[\\/]codemirror[\\/]/,
+          chunks: "initial",
+          name: "codemirror",
+        },
+      },
+    },
+  },
 };
