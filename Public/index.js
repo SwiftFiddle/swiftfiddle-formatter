@@ -1,5 +1,7 @@
 "use strict";
 
+import("./js/logger.js");
+
 import "./scss/default.scss";
 import "./css/common.css";
 
@@ -8,12 +10,12 @@ import "codemirror/addon/lint/lint.css";
 
 import CodeMirror from "codemirror";
 import "codemirror/mode/swift/swift";
+import "codemirror/addon/display/panel";
 import "codemirror/addon/edit/matchbrackets";
 import "codemirror/addon/edit/closebrackets";
 import "codemirror/addon/edit/trailingspace";
 import "codemirror/addon/lint/lint";
 
-import "./js/logger.js";
 import "./js/icon.js";
 
 import { Popover, Tooltip } from "bootstrap";
@@ -61,9 +63,11 @@ var result = CodeMirror.fromTextArea(
     screenReaderLabel: "Result Pane",
     matchBrackets: true,
     showTrailingSpace: true,
+    rulers: [{ color: "#adb5bd", column: 80, lineStyle: "solid", width: 1 }],
   }
 );
 result.setSize("100%", "100%");
+// setOption("rulers", ...)
 
 document.getElementById("clear-button").classList.remove("disabled");
 
