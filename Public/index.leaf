@@ -33,30 +33,32 @@
   <div class="container-fluid g-0 d-flex flex-column min-vh-100">
     <header class="row m-0 g-0 justify-content-start bg-light">
       <div class="col-md-auto m-2">
-        <span class="fab fa-swift fa-2x text-primary d-inline-block align-middle"></span>
+        <span class="fab fa-swift fa-2x text-primary d-inline-block align-middle"
+          style="min-width: 2rem; min-height: 2rem;"></span>
         <span class="h4 text-dark d-inline-block align-middle m-0">Swift Formatter</span>
       </div>
       <div class="col-md-auto m-2">
         <button type="button" id="run-button" class="btn btn-primary btn-sm rounded-pill disabled">
-          <span id="run-button-icon" class="fas fa-play fa-fw ms-2"></span>
+          <span id="run-button-icon" class="fas fa-play fa-fw ms-2"
+            style="display: inline-block; min-width: 1em; min-height: 1em;"></span>
           <span id="run-button-spinner" class="fas fa-circle-notch fa-spin fa-fw ms-2 d-none"></span>
           <span class="mx-2">Run</span>
         </button>
         <span data-bs-toggle="offcanvas" data-bs-target="#configuration-offcanvas" aria-label="Configuration">
           <button type="button" id="configuration-button" class="btn btn-outline-primary btn-sm rounded-circle p-0 ms-1"
             data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-container="\#configuration-button"
-            title="Configuration">
+            title="Configuration" style="min-width: 2rem; min-height: 2rem;">
             <span class="fas fa-cog fa-fw"></span>
           </button>
         </span>
         <button type="button" id="clear-button" class="btn btn-outline-primary btn-sm rounded-circle p-0 ms-1 disabled"
           data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-container="\#clear-button" title="Clear"
-          aria-label="Clear">
+          aria-label="Clear" style="min-width: 2rem; min-height: 2rem;">
           <span class="fas fa-eraser fa-fw"></span>
         </button>
         <span data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-container="\#about-button" title="About">
           <button type="button" id="about-button" class="btn btn-outline-primary btn-sm rounded-circle p-0 ms-1"
-            aria-label="About">
+            aria-label="About" style="min-width: 2rem; min-height: 2rem;">
             <span class="fas fa-question fa-fw"></span>
           </button>
         </span>
