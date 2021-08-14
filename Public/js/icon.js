@@ -11,6 +11,7 @@ import {
   faExclamationTriangle,
 } from "@fortawesome/pro-solid-svg-icons";
 import {
+  faToolbox,
   faCheck,
   faClipboard,
   faCheckCircle,
@@ -33,6 +34,7 @@ library.add(
   faQuestion,
   faExclamationTriangle,
 
+  faToolbox,
   faCheck,
   faClipboard,
   faCheckCircle,
