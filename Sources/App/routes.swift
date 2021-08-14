@@ -5,65 +5,19 @@ import SwiftFormatConfiguration
 func routes(_ app: Application) throws {
     app.get("health") { _ in ["status": "pass"] }
 
-    app.get { (req) in
-        return req.view.render("index")
-    }
-
-    app.webSocket("api", "ws") { (req, ws) in
-        ws.onBinary { (ws, buffer) in
+    app.webSocket { (req, ws) in
+        ws.onText { (ws, text) in
             do {
-                guard let requestData = buffer.getData(at: 0, length: buffer.readableBytes) else { return }
-
-                let decoder = JSONDecoder()
-                let request = try decoder.decode(FormatRequest.self, from: requestData)
-
-                let encoder = JSONEncoder()
-                let (output, error) = try format(
-                    source: request.code,
-                    configuration: request.configuration
+                let (output, _) = try format(
+                    source: text,
+                    configuration: nil
                 )
-                let (_, lintMessage) = try lint(
-                    source: request.code,
-                    configuration: request.configuration
-                )
-
-                let response = FormatResponse(
-                    output: output,
-                    error: error,
-                    lintMessage: lintMessage,
-                    original: request.code
-                )
-                if let message = String(data: try encoder.encode(response), encoding: .utf8) {
-                    ws.send(message)
-                }
+                ws.send(output)
             } catch {
                 req.logger.error("\(error)")
-                ws.send("")
+                ws.send(text)
             }
         }
-    }
-
-    app.on(.POST, "api", body: .collect(maxSize: "10mb")) { (req) -> FormatResponse in
-        guard let request = try? req.content.decode(FormatRequest.self) else {
-            throw Abort(.badRequest)
-        }
-
-        let (output, error) = try format(
-            source: request.code,
-            configuration: request.configuration
-        )
-        let (_, lintMessage) = try lint(
-            source: request.code,
-            configuration: request.configuration
-        )
-
-        let response = FormatResponse(
-            output: output,
-            error: error,
-            lintMessage: lintMessage,
-            original: request.code
-        )
-        return response
     }
 
     func format(source: String, configuration: Configuration?) throws -> (stdout: String, stderr: String) {

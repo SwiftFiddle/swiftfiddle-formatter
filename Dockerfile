@@ -1,18 +1,3 @@
-FROM node:lts-slim as node
-
-WORKDIR /build
-
-ARG FONTAWESOME_TOKEN
-COPY package*.json ./
-RUN echo "@fortawesome:registry=https://npm.fontawesome.com/\n//npm.fontawesome.com/:_authToken=${FONTAWESOME_TOKEN}" > ./.npmrc \
-    && npm ci \
-    && rm -f ./.npmrc
-
-COPY webpack.*.js ./
-COPY Public ./Public/
-RUN npx webpack --config webpack.prod.js
-
-
 FROM swift:5.4-focal as swift
 RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true \
     && apt-get -q update && apt-get -q dist-upgrade -y \
@@ -20,7 +5,6 @@ RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /build
-COPY --from=node /build /build
 COPY ./Package.* ./
 RUN swift package resolve
 
