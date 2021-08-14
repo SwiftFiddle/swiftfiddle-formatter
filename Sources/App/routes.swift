@@ -17,7 +17,6 @@ func routes(_ app: Application) throws {
                 let decoder = JSONDecoder()
                 let request = try decoder.decode(FormatRequest.self, from: requestData)
 
-                let encoder = JSONEncoder()
                 let (output, error) = try format(
                     source: request.code,
                     configuration: request.configuration
@@ -27,6 +26,7 @@ func routes(_ app: Application) throws {
                     configuration: request.configuration
                 )
 
+                let encoder = JSONEncoder()
                 let response = FormatResponse(
                     output: output,
                     error: error,
