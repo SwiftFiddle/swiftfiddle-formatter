@@ -24,7 +24,7 @@ import { Defaults } from "./js/defaults.js";
 import { debounce } from "./js/debounce.js";
 import { Configuration } from "./js/configuration.js";
 
-var editor = CodeMirror.fromTextArea(
+const editor = CodeMirror.fromTextArea(
   document.getElementById("editor-container"),
   {
     mode: "swift",
@@ -52,7 +52,7 @@ editor.clearHistory();
 editor.focus();
 editor.setCursor({ line: editor.lastLine() + 1, ch: 0 });
 
-var result = CodeMirror.fromTextArea(
+const result = CodeMirror.fromTextArea(
   document.getElementById("result-container"),
   {
     mode: "swift",
@@ -66,7 +66,6 @@ var result = CodeMirror.fromTextArea(
   }
 );
 result.setSize("100%", "100%");
-// setOption("rulers", ...)
 
 document.getElementById("clear-button").classList.remove("disabled");
 
@@ -200,6 +199,11 @@ document.getElementById("copy-config-button").addEventListener("click", () => {
 });
 
 function sendFormatRequest() {
+  const value = editor.getValue();
+  if (!value.trim()) {
+    return;
+  }
+
   document.getElementById("run-button-icon").classList.add("d-none");
   document.getElementById("run-button-spinner").classList.remove("d-none");
   setTimeout(() => {
@@ -208,7 +212,7 @@ function sendFormatRequest() {
   }, 600);
 
   formatterService.format({
-    code: editor.getValue(),
+    code: value,
     configuration: buildConfiguration(),
   });
 }
