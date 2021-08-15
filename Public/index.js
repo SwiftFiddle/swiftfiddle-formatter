@@ -62,7 +62,6 @@ const result = CodeMirror.fromTextArea(
     screenReaderLabel: "Result Pane",
     matchBrackets: true,
     showTrailingSpace: true,
-    rulers: [{ color: "#adb5bd", column: 80, lineStyle: "solid", width: 1 }],
   }
 );
 result.setSize("100%", "100%");
