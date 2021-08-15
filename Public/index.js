@@ -21,8 +21,8 @@ import { Popover, Tooltip } from "bootstrap";
 import { SwiftFormat } from "./js/swift_format.js";
 import { Snackbar } from "./js/snackbar.js";
 import { Defaults } from "./js/defaults.js";
-import { debounce } from "./js/debounce.js";
 import { Configuration } from "./js/configuration.js";
+import { debounce } from "./js/debounce.js";
 
 const editor = CodeMirror.fromTextArea(
   document.getElementById("editor-container"),
