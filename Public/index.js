@@ -52,6 +52,13 @@ editor.clearHistory();
 editor.focus();
 editor.setCursor({ line: editor.lastLine() + 1, ch: 0 });
 
+editor.on("cursorActivity", () => {
+  const cursor = editor.getCursor();
+  document.getElementById(
+    "editor-statusbar"
+  ).textContent = `Ln ${cursor.line}, Col ${cursor.ch}`;
+});
+
 const result = CodeMirror.fromTextArea(
   document.getElementById("result-container"),
   {
@@ -65,6 +72,13 @@ const result = CodeMirror.fromTextArea(
   }
 );
 result.setSize("100%", "100%");
+
+result.on("cursorActivity", () => {
+  const cursor = result.getCursor();
+  document.getElementById(
+    "result-statusbar"
+  ).textContent = `Ln ${cursor.line}, Col ${cursor.ch}`;
+});
 
 document.getElementById("clear-button").classList.remove("disabled");
 

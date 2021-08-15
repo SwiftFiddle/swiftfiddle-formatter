@@ -76,7 +76,16 @@
       </div>
     </main>
 
-    <footer class="row p-1 mb-1 bg-light">
+    <div class="row bg-light g-0">
+      <div class="col-md-6 m-0 p-0 text-dark text-right">
+        <span id="editor-statusbar" class="float-end px-3" style="font-size: 0.75em;"></span>
+      </div>
+      <div class="col-md-6 m-0 p-0 text-dark text-right">
+        <span id="result-statusbar" class="float-end px-3" style="font-size: 0.75em;"></span>
+      </div>
+    </div>
+
+    <footer class="row p-1 mb-1 bg-light border-top">
       <div class="row">
         <div class="col-md-12 mx-1 text-center text-dark">
           <a class="text-reset small" href="https://status.swift-format.com/" target="_blank"
