@@ -15,6 +15,7 @@ import {
   faCheck,
   faClipboard,
   faCheckCircle,
+  faCommentAltSmile,
   faAt,
 } from "@fortawesome/pro-regular-svg-icons";
 import {
@@ -38,6 +39,7 @@ library.add(
   faCheck,
   faClipboard,
   faCheckCircle,
+  faCommentAltSmile,
   faAt,
 
   faSlidersV,
