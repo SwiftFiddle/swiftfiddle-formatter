@@ -16,12 +16,13 @@ import "codemirror/addon/lint/lint";
 
 import "./js/logger.js";
 import "./js/icon.js";
+import "./js/about.js";
 
-import { Popover, Tooltip } from "bootstrap";
+import { Tooltip } from "bootstrap";
 import { SwiftFormat } from "./js/swift_format.js";
 import { Snackbar } from "./js/snackbar.js";
 import { Defaults } from "./js/defaults.js";
-import { Configuration } from "./js/configuration.js";
+import { buildConfiguration, resetConfiguration } from "./js/configuration.js";
 import { initEditor } from "./js/editor.js";
 import { initResultView } from "./js/result_view.js";
 import { debounce } from "./js/debounce.js";
@@ -30,12 +31,6 @@ const editor = initEditor(
   document.getElementById("editor-container"),
   document.getElementById("editor-statusbar")
 );
-
-[].slice
-  .call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-  .map((trigger) => {
-    return new Tooltip(trigger);
-  });
 
 editor.setValue(Defaults.code);
 editor.clearHistory();
@@ -48,16 +43,6 @@ const resultView = initResultView(
 );
 
 document.getElementById("clear-button").classList.remove("disabled");
-
-const aboutButton = document.getElementById("about-button");
-const popoverContent = document.getElementById("about-popover");
-const popover = new Popover(aboutButton, {
-  title: "",
-  trigger: "manual",
-  html: true,
-  content: popoverContent,
-  container: "body",
-});
 
 const formatterService = new SwiftFormat();
 formatterService.onready = () => {
@@ -104,7 +89,7 @@ formatterService.onresponse = (response) => {
 const updateOnTextChange = debounce(() => {
   sendFormatRequest();
 }, 400);
-editor.on("change", (change, editor) => {
+editor.on("change", () => {
   updateOnTextChange();
 });
 
@@ -138,24 +123,9 @@ document.getElementById("clear-button").addEventListener("click", () => {
   resultView.clearHistory();
 });
 
-aboutButton.addEventListener("show.bs.popover", () => {
-  popoverContent.classList.remove("d-none");
-});
-
-aboutButton.addEventListener("click", (event) => {
-  console.log(popover);
-  popover.toggle();
-  event.stopPropagation();
-});
-
-document.body.addEventListener("click", (event) => {
-  if (event.target !== aboutButton && !event.target.closest(".popover")) {
-    popover.hide();
-  }
-});
-
 document.getElementById("reset-config-button").addEventListener("click", () => {
   resetConfiguration();
+  sendFormatRequest();
 });
 
 if (!navigator.clipboard) {
@@ -188,70 +158,8 @@ function sendFormatRequest() {
   });
 }
 
-function buildConfiguration() {
-  const configuration = JSON.parse(JSON.stringify(Configuration.default));
-
-  [...form.getElementsByTagName("input")].forEach((input) => {
-    if (input.id === "indentationCount") {
-      if (input.value) {
-        const indent = document.getElementById("indentation").textContent;
-        if (indent) {
-          const indentation = {};
-          indentation[indent.toLowerCase()] = parseInt(input.value);
-          configuration["indentation"] = indentation;
-        }
-      }
-    } else if (input.type === "checkbox") {
-      configuration[input.id] = input.checked;
-    } else {
-      if (input.value) {
-        configuration[input.id] = parseInt(input.value);
-      }
-    }
+[].slice
+  .call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  .map((trigger) => {
+    return new Tooltip(trigger);
   });
-
-  const accessLevel = document.getElementById(
-    "fileScopedDeclarationPrivacy"
-  ).textContent;
-
-  configuration["fileScopedDeclarationPrivacy"] = { accessLevel: accessLevel };
-
-  return configuration;
-}
-
-function resetConfiguration() {
-  const configuration = JSON.parse(JSON.stringify(Configuration.default));
-
-  [...form.getElementsByTagName("input")].forEach((input) => {
-    if (input.id === "indentationCount") {
-      input.value = null;
-      document.getElementById("indentation").textContent = "Spaces";
-    } else if (input.type === "checkbox") {
-      if (configuration[input.id]) {
-        input.checked = configuration[input.id];
-      } else {
-        input.checked = configuration.rules[input.id];
-      }
-    } else {
-      input.value = null;
-    }
-  });
-
-  document.getElementById("fileScopedDeclarationPrivacy").textContent =
-    "private";
-
-  document.querySelectorAll(".dropdown-list-item").forEach((listItem) => {
-    for (let sibling of listItem.parentNode.children) {
-      sibling.classList.remove("active-tick");
-    }
-    for (let sibling of listItem.parentNode.children) {
-      for (let child of sibling.children) {
-        if (child.textContent == "Spaces" || child.textContent == "private") {
-          sibling.classList.add("active-tick");
-        }
-      }
-    }
-  });
-
-  sendFormatRequest();
-}

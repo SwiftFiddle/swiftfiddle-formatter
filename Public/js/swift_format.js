@@ -77,7 +77,7 @@ export class SwiftFormat {
       endpoint = "ws:";
     }
     endpoint += "//" + window.location.host;
-    endpoint += window.location.pathname + "/api/ws";
+    endpoint += window.location.pathname + "api/ws";
     return endpoint;
   }
 }
