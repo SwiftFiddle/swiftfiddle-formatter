@@ -1,8 +1,8 @@
 "use strict";
 
 export class SwiftFormat {
-  constructor(endpoint) {
-    this.connection = this.createConnection(endpoint);
+  constructor() {
+    this.connection = this.createConnection(this.endpoint());
 
     this.onconnect = () => {};
     this.onready = () => {};
@@ -67,5 +67,17 @@ export class SwiftFormat {
       }
     };
     return connection;
+  }
+
+  endpoint() {
+    let endpoint;
+    if (window.location.protocol === "https:") {
+      endpoint = "wss:";
+    } else {
+      endpoint = "ws:";
+    }
+    endpoint += "//" + window.location.host;
+    endpoint += window.location.pathname + "/api/ws";
+    return endpoint;
   }
 }

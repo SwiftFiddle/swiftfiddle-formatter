@@ -22,24 +22,14 @@ import { SwiftFormat } from "./js/swift_format.js";
 import { Snackbar } from "./js/snackbar.js";
 import { Defaults } from "./js/defaults.js";
 import { Configuration } from "./js/configuration.js";
+import { initEditor } from "./js/editor.js";
+import { initResultView } from "./js/result_view.js";
 import { debounce } from "./js/debounce.js";
 
-const editor = CodeMirror.fromTextArea(
+const editor = initEditor(
   document.getElementById("editor-container"),
-  {
-    mode: "swift",
-    lineNumbers: true,
-    lineWrapping: false,
-    tabSize: 2,
-    screenReaderLabel: "Editor Pane",
-    matchBrackets: true,
-    autoCloseBrackets: true,
-    showTrailingSpace: true,
-    gutters: ["CodeMirror-lint-markers"],
-    lint: true,
-  }
+  document.getElementById("editor-statusbar")
 );
-editor.setSize("100%", "100%");
 
 [].slice
   .call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
@@ -52,33 +42,10 @@ editor.clearHistory();
 editor.focus();
 editor.setCursor({ line: editor.lastLine() + 1, ch: 0 });
 
-editor.on("cursorActivity", () => {
-  const cursor = editor.getCursor();
-  document.getElementById(
-    "editor-statusbar"
-  ).textContent = `Ln ${cursor.line}, Col ${cursor.ch}`;
-});
-
-const result = CodeMirror.fromTextArea(
+const resultView = initResultView(
   document.getElementById("result-container"),
-  {
-    mode: "swift",
-    lineNumbers: true,
-    lineWrapping: false,
-    readOnly: true,
-    screenReaderLabel: "Result Pane",
-    matchBrackets: true,
-    showTrailingSpace: true,
-  }
+  document.getElementById("result-statusbar")
 );
-result.setSize("100%", "100%");
-
-result.on("cursorActivity", () => {
-  const cursor = result.getCursor();
-  document.getElementById(
-    "result-statusbar"
-  ).textContent = `Ln ${cursor.line}, Col ${cursor.ch}`;
-});
 
 document.getElementById("clear-button").classList.remove("disabled");
 
@@ -92,16 +59,7 @@ const popover = new Popover(aboutButton, {
   container: "body",
 });
 
-let endpoint;
-if (window.location.protocol === "https:") {
-  endpoint = "wss:";
-} else {
-  endpoint = "ws:";
-}
-endpoint += "//" + window.location.host;
-endpoint += window.location.pathname + "/api/ws";
-
-const formatterService = new SwiftFormat(endpoint);
+const formatterService = new SwiftFormat();
 formatterService.onready = () => {
   document.getElementById("run-button").classList.remove("disabled");
   sendFormatRequest();
@@ -110,9 +68,9 @@ formatterService.onready = () => {
 formatterService.onresponse = (response) => {
   if (response) {
     if (response.output.trim()) {
-      result.setValue(response.output);
+      resultView.setValue(response.output);
     } else {
-      result.setValue(response.original);
+      resultView.setValue(response.original);
     }
 
     editor.setOption("lint", {
@@ -176,8 +134,8 @@ document.getElementById("run-button").addEventListener("click", () => {
 document.getElementById("clear-button").addEventListener("click", () => {
   editor.setValue("");
   editor.clearHistory();
-  result.setValue("");
-  result.clearHistory();
+  resultView.setValue("");
+  resultView.clearHistory();
 });
 
 aboutButton.addEventListener("show.bs.popover", () => {
