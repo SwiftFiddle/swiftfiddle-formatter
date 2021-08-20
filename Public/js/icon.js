@@ -17,6 +17,7 @@ import {
   faCheckCircle,
   faCommentAltSmile,
   faAt,
+  faDonate,
 } from "@fortawesome/pro-regular-svg-icons";
 import {
   faSlidersV,
@@ -41,6 +42,7 @@ library.add(
   faCheckCircle,
   faCommentAltSmile,
   faAt,
+  faDonate,
 
   faSlidersV,
   faRulerTriangle,
