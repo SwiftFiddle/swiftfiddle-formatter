@@ -9,7 +9,7 @@
     "@sentry/browser": "6.11.0",
     "@sentry/tracing": "6.11.0",
     "bootstrap": "5.1.0",
-    "codemirror": "5.62.2"
+    "codemirror": "5.62.3"
   },
   "devDependencies": {
     "autoprefixer": "10.3.1",
