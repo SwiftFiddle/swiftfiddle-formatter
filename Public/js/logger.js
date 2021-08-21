@@ -1,10 +1,10 @@
 "use strict";
 
-import * as Sentry from "@sentry/browser";
-import { Integrations } from "@sentry/tracing";
+import { datadogLogs } from "@datadog/browser-logs";
 
-Sentry.init({
-  dsn: "https://4e7c3a242df04871977214a4e6263494@o938512.ingest.sentry.io/5901149",
-  integrations: [new Integrations.BrowserTracing()],
-  tracesSampleRate: 1.0,
+datadogLogs.init({
+  clientToken: "pub43c12e5c173400e3670335f5dd0497ca",
+  site: "datadoghq.com",
+  forwardErrorsToLogs: true,
+  sampleRate: 100,
 });
