@@ -12,6 +12,7 @@
     "@popperjs/core": "2.9.3",
     "bootstrap": "5.1.0",
     "codemirror": "5.62.3"
+    "reconnecting-websocket": "4.4.0"
   },
   "devDependencies": {
     "autoprefixer": "10.3.2",

@@ -1,5 +1,6 @@
 "use strict";
 
+import ReconnectingWebSocket from "reconnecting-websocket";
 import { datadogLogs } from "@datadog/browser-logs";
 
 export class SwiftFormat {
@@ -28,31 +29,19 @@ export class SwiftFormat {
       return this.connection;
     }
 
-    const connection = new WebSocket(endpoint);
+    const connection = new ReconnectingWebSocket(endpoint, [], {
+      maxReconnectionDelay: 10000,
+      minReconnectionDelay: 1000,
+      reconnectionDelayGrowFactor: 1.3,
+      connectionTimeout: 10000,
+      maxRetries: Infinity,
+      debug: false,
+    });
     connection.bufferType = "arraybuffer";
 
     connection.onopen = () => {
       this.onconnect();
       this.onready();
-
-      document.addEventListener("visibilitychange", () => {
-        switch (document.visibilityState) {
-          case "hidden":
-            break;
-          case "visible":
-            this.connection = this.createConnection(connection.url);
-            break;
-        }
-      });
-    };
-
-    connection.onclose = (event) => {
-      if (event.code !== 1006) {
-        return;
-      }
-      setTimeout(() => {
-        this.connection = this.createConnection(connection.url);
-      }, 1000);
     };
 
     connection.onerror = (event) => {
