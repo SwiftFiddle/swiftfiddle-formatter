@@ -19,7 +19,9 @@ export function initEditor(container, statusbar) {
 
   editor.on("cursorActivity", () => {
     const cursor = editor.getCursor();
-    statusbar.textContent = `Ln ${cursor.line}, Col ${cursor.ch}`;
+    const line = cursor.line + 1;
+    const col = cursor.ch + 1;
+    statusbar.textContent = `Ln ${line}, Col ${col}`;
   });
 
   return editor;
