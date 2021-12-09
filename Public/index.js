@@ -1,5 +1,9 @@
 "use strict";
 
+import { init, trackPages } from "insights-js";
+init("XkJsfa5KasGf9W_8");
+trackPages();
+
 import "./scss/default.scss";
 import "./css/common.css";
 
