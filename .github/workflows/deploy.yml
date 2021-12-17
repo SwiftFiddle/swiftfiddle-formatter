@@ -17,4 +17,5 @@ jobs:
           email: ${{ secrets.HEROKU_EMAIL }}
           api_key: ${{ secrets.HEROKU_API_KEY }}
           app_name: ${{ secrets.HEROKU_APP_NAME }}
+          options: --build-arg FONTAWESOME_TOKEN=${{ secrets.FONTAWESOME_TOKEN }}
           dockerfile_path: .
