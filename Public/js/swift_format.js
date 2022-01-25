@@ -1,7 +1,6 @@
 "use strict";
 
 import ReconnectingWebSocket from "reconnecting-websocket";
-import { datadogLogs } from "@datadog/browser-logs";
 
 export class SwiftFormat {
   constructor() {
@@ -45,7 +44,6 @@ export class SwiftFormat {
     };
 
     connection.onerror = (event) => {
-      datadogLogs.logger.error("swift-format websocket error", event);
       connection.close();
     };
 
