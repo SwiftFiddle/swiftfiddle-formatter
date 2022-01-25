@@ -21,7 +21,6 @@ import "codemirror/addon/edit/closebrackets";
 import "codemirror/addon/edit/trailingspace";
 import "codemirror/addon/lint/lint";
 
-import "./js/logger.js";
 import "./js/icon.js";
 import "./js/about.js";
 
