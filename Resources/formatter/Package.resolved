@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/apple/swift-argument-parser.git",
         "state": {
           "branch": null,
-          "revision": "83b23d940471b313427da226196661856f6ba3e0",
-          "version": "0.4.4"
+          "revision": "82905286cc3f0fa8adc4674bf49437cab65a8373",
+          "version": "1.1.1"
         }
       },
       {
@@ -15,8 +15,8 @@
         "repositoryURL": "https://github.com/apple/swift-format.git",
         "state": {
           "branch": null,
-          "revision": "9c15831b798d767c9af0927a931de5d557004936",
-          "version": "0.50400.0"
+          "revision": "c06258081a3f8703f55ff6e9647b32cf3144e247",
+          "version": "0.50600.0"
         }
       },
       {
@@ -24,8 +24,26 @@
         "repositoryURL": "https://github.com/apple/swift-syntax",
         "state": {
           "branch": null,
-          "revision": "2fff9fc25cdc059379b6bd309377cfab45d8520c",
-          "version": "0.50400.0"
+          "revision": "0b6c22b97f8e9320bca62e82cdbee601cf37ad3f",
+          "version": "0.50600.1"
+        }
+      },
+      {
+        "package": "swift-system",
+        "repositoryURL": "https://github.com/apple/swift-system.git",
+        "state": {
+          "branch": null,
+          "revision": "836bc4557b74fe6d2660218d56e3ce96aff76574",
+          "version": "1.1.1"
+        }
+      },
+      {
+        "package": "swift-tools-support-core",
+        "repositoryURL": "https://github.com/apple/swift-tools-support-core.git",
+        "state": {
+          "branch": null,
+          "revision": "b7667f3e266af621e5cc9c77e74cacd8e8c00cb4",
+          "version": "0.2.5"
         }
       }
     ]

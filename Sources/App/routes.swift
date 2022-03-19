@@ -68,14 +68,14 @@ func routes(_ app: Application) throws {
     }
 
     func format(source: String, configuration: Configuration?) throws -> (stdout: String, stderr: String) {
-        return try exec(mode: "format", source: source, configuration: configuration)
+        return try exec(subcommand: "format", source: source, configuration: configuration)
     }
 
     func lint(source: String, configuration: Configuration?) throws -> (stdout: String, stderr: String) {
-        return try exec(mode: "lint", source: source, configuration: configuration)
+        return try exec(subcommand: "lint", source: source, configuration: configuration)
     }
 
-    func exec(mode: String, source: String, configuration: Configuration?) throws -> (stdout: String, stderr: String) {
+    func exec(subcommand: String, source: String, configuration: Configuration?) throws -> (stdout: String, stderr: String) {
         guard let input = source.data(using: .utf8) else {
             throw Abort(.badRequest)
         }
@@ -100,7 +100,7 @@ func routes(_ app: Application) throws {
             fileURLWithPath: "\(app.directory.resourcesDirectory)formatter/.build/release/swift-format"
         )
         process.executableURL = executableURL
-        process.arguments = ["--mode", mode, "--configuration", configurationFile.path]
+        process.arguments = [subcommand, "--configuration", configurationFile.path]
 
         process.standardInput = standardInput
         process.standardOutput = standardOutput
