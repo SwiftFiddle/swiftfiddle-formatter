@@ -15,8 +15,8 @@
         "repositoryURL": "https://github.com/apple/swift-format.git",
         "state": {
           "branch": null,
-          "revision": "c06258081a3f8703f55ff6e9647b32cf3144e247",
-          "version": "0.50600.0"
+          "revision": "e6b8c60c7671066d229e30efa1e31acf57be412e",
+          "version": "0.50600.1"
         }
       },
       {
