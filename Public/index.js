@@ -68,7 +68,7 @@ formatterService.onresponse = (response) => {
       getAnnotations: () => {
         const message = response.lintMessage;
         const matches = message.matchAll(
-          /.+\/<stdin>:(\d+):(\d+): (error|warning|note): ([\s\S]*?)\n*(?=(?:\/|$))/gi
+          /<stdin>:(\d+):(\d+): (error|warning|note): ([\s\S]*?)\n*(?=(?:\/|$))/gi
         );
         return [...matches].map((match) => {
           const row = +match[1] - 1; // 0 origin
