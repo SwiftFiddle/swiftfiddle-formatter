@@ -106,7 +106,7 @@ func routes(_ app: Application) throws {
         process.standardOutput = standardOutput
         process.standardError = standardError
 
-        process.launch()
+        try process.run()
         process.waitUntilExit()
 
         try? FileManager().removeItem(at: configurationFile)
