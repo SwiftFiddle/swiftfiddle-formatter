@@ -64,7 +64,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       chunks: ["index"],
       filename: "index.leaf",
-      template: "./Public/index.leaf",
+      template: "./Public/index.html",
     }),
     new CopyWebbackPlugin({
       patterns: [
@@ -72,7 +72,7 @@ module.exports = {
         { from: "./Public/favicons", to: "favicons" },
         { from: "./Public/apple-touch-icon.png", to: "apple-touch-icon.png" },
         { from: "./Public/favicon.ico", to: "favicon.ico" },
-        { from: "./Public/error.leaf", to: "error.leaf" },
+        { from: "./Public/error.html", to: "error.leaf" },
         { from: "./Public/robots.txt", to: "robots.txt" },
       ],
     }),
