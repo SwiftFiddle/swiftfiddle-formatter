@@ -1,20 +1,21 @@
-name: Deploy
+name: Fly Deploy
 on:
   push:
     branches: [main]
   workflow_dispatch:
 
+env:
+  FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+  FONTAWESOME_TOKEN: ${{ secrets.FONTAWESOME_TOKEN }}
+
 jobs:
   deploy:
+    name: Deploy app
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Build, Push and Release a Docker container to Heroku
-        uses: gonuit/heroku-docker-deploy@v1.3.3
-        with:
-          email: ${{ secrets.HEROKU_EMAIL }}
-          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
-          docker_options: --build-arg FONTAWESOME_TOKEN=${{ secrets.FONTAWESOME_TOKEN }}
+      - name: Deploy
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+      - run: flyctl deploy --build-arg FONTAWESOME_TOKEN=${{ env.FONTAWESOME_TOKEN }} --remote-only
