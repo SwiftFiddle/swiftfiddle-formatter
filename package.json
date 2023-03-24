@@ -8,7 +8,7 @@
     "@fortawesome/pro-light-svg-icons": "5.15.3",
     "@fortawesome/pro-regular-svg-icons": "5.15.3",
     "@fortawesome/pro-solid-svg-icons": "5.15.3",
-    "@popperjs/core": "2.11.6",
+    "@popperjs/core": "2.11.7",
     "bootstrap": "5.2.3",
     "codemirror": "5.65.12",
     "plausible-tracker": "0.3.8",
