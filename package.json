@@ -9,7 +9,7 @@
     "@fortawesome/pro-regular-svg-icons": "5.15.3",
     "@fortawesome/pro-solid-svg-icons": "5.15.3",
     "@popperjs/core": "2.11.8",
-    "bootstrap": "5.2.3",
+    "bootstrap": "5.3.0",
     "codemirror": "5.65.13",
     "plausible-tracker": "0.3.8",
     "reconnecting-websocket": "4.4.0"
