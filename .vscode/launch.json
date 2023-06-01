@@ -3,20 +3,22 @@
     {
       "type": "lldb",
       "request": "launch",
-      "name": "Debug Run",
-      "program": "${workspaceFolder:swiftfiddle-formatter}/.build/debug/Run",
+      "sourceLanguages": ["swift"],
+      "name": "Debug App",
+      "program": "${workspaceFolder:swiftfiddle-formatter}/.build/debug/App",
       "args": [],
       "cwd": "${workspaceFolder:swiftfiddle-formatter}",
-      "preLaunchTask": "swift: Build Debug Run"
+      "preLaunchTask": "swift: Build Debug App"
     },
     {
       "type": "lldb",
       "request": "launch",
-      "name": "Release Run",
-      "program": "${workspaceFolder:swiftfiddle-formatter}/.build/release/Run",
+      "sourceLanguages": ["swift"],
+      "name": "Release App",
+      "program": "${workspaceFolder:swiftfiddle-formatter}/.build/release/App",
       "args": [],
       "cwd": "${workspaceFolder:swiftfiddle-formatter}",
-      "preLaunchTask": "swift: Build Release Run"
+      "preLaunchTask": "swift: Build Release App"
     }
   ]
 }

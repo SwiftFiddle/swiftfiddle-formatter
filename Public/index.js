@@ -8,10 +8,11 @@ const { enableAutoPageviews } = Plausible({
 enableAutoPageviews();
 
 import "./scss/default.scss";
-import "./css/common.css";
 
 import "codemirror/lib/codemirror.css";
 import "codemirror/addon/lint/lint.css";
+
+import "./css/common.css";
 
 import CodeMirror from "codemirror";
 import "codemirror/mode/swift/swift";
