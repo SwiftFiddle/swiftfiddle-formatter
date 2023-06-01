@@ -12,7 +12,7 @@ export function initResultView(container, statusbar) {
     matchBrackets: true,
     showTrailingSpace: true,
   });
-  editor.setSize("100%", "100%");
+  editor.setSize("100%", `calc(100% - 18px)`);
 
   editor.on("cursorActivity", () => {
     const cursor = editor.getCursor();

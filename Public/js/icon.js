@@ -9,6 +9,7 @@ import {
   faUndo,
   faQuestion,
   faExclamationTriangle,
+  faHeart,
 } from "@fortawesome/pro-solid-svg-icons";
 import {
   faToolbox,
@@ -17,7 +18,6 @@ import {
   faCheckCircle,
   faCommentAltSmile,
   faAt,
-  faDonate,
 } from "@fortawesome/pro-regular-svg-icons";
 import {
   faSlidersV,
@@ -35,6 +35,7 @@ library.add(
   faUndo,
   faQuestion,
   faExclamationTriangle,
+  faHeart,
 
   faToolbox,
   faCheck,
@@ -42,7 +43,6 @@ library.add(
   faCheckCircle,
   faCommentAltSmile,
   faAt,
-  faDonate,
 
   faSlidersV,
   faRulerTriangle,

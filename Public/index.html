@@ -14,168 +14,118 @@
   <meta name="description" content="Format a Swift code, making it readable and pretty, with the proper indentation." />
   <meta property="og:site_name" content="Swift Formatter - Online Swift code formatter" />
 
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#da532c">
-  <meta name="msapplication-config" content="/favicons/browserconfig.xml">
   <meta name="theme-color" content="#ffffff">
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
-  <link rel="manifest" href="/favicons/site.webmanifest">
-  <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#5bbad5">
-  <link rel="shortcut icon" href="/favicons/favicon.ico">
+
+  <style>
+    body {
+      height: 100vh;
+      height: 100svh;
+    }
+
+    .swift-logo {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    .button-circle {
+      width: 2rem;
+      height: 2rem;
+    }
+  </style>
 
   <title>Swift Formatter - Online Swift code formatter</title>
 </head>
 
 <body>
-  <!-- Main Content -->
-  <div class="container-fluid g-0 d-flex flex-column min-vh-100">
-    <header class="row m-0 g-0 justify-content-start bg-light">
-      <div class="col-md-auto m-2">
-        <a class="text-decoration-none" href="#" data-bs-toggle="offcanvas" data-bs-target="#service-list-offcanvas"
-          aria-label="Service List" aria-controls="service-list-offcanvas">
-          <span class="fab fa-swift fa-2x text-primary d-inline-block align-middle"
-            style="min-width: 2rem; min-height: 2rem;"></span>
-          <span class="h4 text-dark d-inline-block align-middle m-0">Swift Formatter</span>
-        </a>
-      </div>
-      <div class="col-md-auto m-2">
-        <button type="button" id="run-button" class="btn btn-primary btn-sm rounded-pill disabled">
-          <span id="run-button-icon" class="fas fa-play fa-fw ms-2"
-            style="display: inline-block; min-width: 1em; min-height: 1em;"></span>
-          <span id="run-button-spinner" class="fas fa-circle-notch fa-spin fa-fw ms-2 d-none"></span>
-          <span class="mx-2">Run</span>
-        </button>
-        <span data-bs-toggle="offcanvas" data-bs-target="#configuration-offcanvas" aria-label="Configuration">
-          <button type="button" id="configuration-button" class="btn btn-outline-primary btn-sm rounded-circle p-0 ms-1"
-            data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-container="#configuration-button"
-            title="Configuration" style="min-width: 2rem; min-height: 2rem;">
-            <span class="fas fa-cog fa-fw"></span>
+  <div class="container-fluid d-flex flex-column bg-light g-0 h-100">
+    <header class="row row-cols-1 bg-light g-0">
+      <div class="col">
+        <div class="d-inline-block mx-1">
+          <a class="text-decoration-none" href="/">
+            <span class="fa-brands fa-swift fa-2x text-primary d-inline-block align-middle p-1 swift-logo"></span><span
+              class="h4 text-dark d-inline-block align-middle m-0">Swift Formatter</span>
+          </a>
+          <button id="run-button" type="button" class="btn btn-primary btn-sm rounded-pill px-4 m-1 disabled"
+            aria-label="Update">
+            <span id="run-button-icon" class="fa-solid fa-play fa-fw"></span>
+            <span id="run-button-spinner" class="fa-duotone fa-spinner-third fa-spin fa-fw d-none"></span>
+            <span class="px-1">Run</span>
           </button>
-        </span>
-        <button type="button" id="clear-button" class="btn btn-outline-primary btn-sm rounded-circle p-0 ms-1 disabled"
-          data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-container="#clear-button" title="Clear"
-          aria-label="Clear" style="min-width: 2rem; min-height: 2rem;">
-          <span class="fas fa-eraser fa-fw"></span>
-        </button>
-        <span data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-container="#about-button" title="About">
-          <button type="button" id="about-button" class="btn btn-outline-primary btn-sm rounded-circle p-0 ms-1"
-            aria-label="About" style="min-width: 2rem; min-height: 2rem;">
-            <span class="fas fa-question fa-fw"></span>
+          <span data-bs-toggle="offcanvas" data-bs-target="#configuration-offcanvas" aria-label="Configuration">
+            <button id="configuration-button" type="button"
+              class="btn btn-outline-primary btn-sm rounded-circle button-circle m-1" data-bs-toggle="tooltip"
+              data-bs-placement="bottom" data-bs-container="#configuration-button" title="Configuration"
+              aria-label="Configuration">
+              <span class="fa-solid fa-cog"></span>
+            </button>
+          </span>
+          <button id="clear-button" type="button"
+            class="btn btn-outline-primary btn-sm rounded-circle button-circle m-1 disabled" data-bs-toggle="tooltip"
+            data-bs-placement="bottom" data-bs-container="#clear-button" title="Clear" aria-label="Clear">
+            <span class="fa-solid fa-eraser"></span>
           </button>
-        </span>
+          <span data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-container="#about-button" title="About">
+            <button id="about-button" type="button"
+              class="btn btn-outline-primary btn-sm rounded-circle button-circle m-1" aria-label="About">
+              <span class="fa-solid fa-question"></span>
+            </button>
+          </span>
+        </div>
       </div>
     </header>
-
-    <main class="row bg-light flex-fill fill d-flex g-0">
-      <div class="col-md-6 border-top">
-        <textarea id="editor-container" class="h-100 d-none"></textarea>
-      </div>
-      <div class="col-md-6 border-top">
-        <textarea id="result-container" class="h-100 d-none"></textarea>
+    <main class="flex-grow-1 bg-light">
+      <div class="row g-0 h-100">
+        <div class="col-md-6">
+          <textarea id="editor-container" class="d-none"></textarea>
+          <div class="text-dark text-right">
+            <span id="editor-statusbar" class="float-end px-3" style="font-size: 0.75em;"></span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <textarea id="result-container" class="d-none"></textarea>
+          <div class="text-dark text-right">
+            <span id="result-statusbar" class="float-end px-3" style="font-size: 0.75em;"></span>
+          </div>
+        </div>
       </div>
     </main>
-
-    <div class="row bg-light g-0">
-      <div class="col-md-6 m-0 p-0 text-dark text-right">
-        <span id="editor-statusbar" class="float-end px-3" style="font-size: 0.75em;"></span>
-      </div>
-      <div class="col-md-6 m-0 p-0 text-dark text-right">
-        <span id="result-statusbar" class="float-end px-3" style="font-size: 0.75em;"></span>
-      </div>
-    </div>
-
-    <footer class="row p-1 mb-1 bg-light border-top">
-      <div class="row">
-        <div class="col-md-12 mx-1 text-center text-dark">
-          <a class="text-reset text-decoration-none small ms-1" href="https://status.swift-format.com" target="_blank"
-            rel="nofollow noopener noreferrer">
-            <span class="fal fa-monitor-heart-rate me-1 d-inline-block"
-              style="display: inline-block; min-width: 1em; min-height: 1em;"></span>System Status</a>
-          <a class="text-reset text-decoration-none small ms-4 d-inline-block"
-            href="https://github.com/swiftfiddle/swiftfiddle-formatter/issues/new" target="_blank"
-            rel="nofollow noopener noreferrer">
-            <span class="far fa-comment-alt-smile me-1"
-              style="display: inline-block; min-width: 1em; min-height: 1em;"></span>Feedback</a>
-          <a class="text-reset text-decoration-none small ms-4 d-inline-block"
-            href="https://github.com/swiftfiddle/swiftfiddle-formatter" target="_blank"
-            rel="nofollow noopener noreferrer">
-            <span class="fab fa-github me-1"
-              style="display: inline-block; min-width: 1em; min-height: 1em;"></span>Source Code</a>
-          <a class="text-reset text-decoration-none small ms-4 me-1 d-inline-block" href="https://twitter.com/k_katsumi"
+    <footer class="row row-cols-1 bg-light g-0">
+      <div class="col p-1 text-center">
+        <div class="d-inline-block mx-2">
+          <a class="text-reset text-decoration-none small" href="https://status.swift-format.com" target="_blank"
+            rel="nofollow noopener noreferrer"><span class="fa-light fa-monitor-heart-rate"></span><span
+              class="mx-2">System
+              Status</span></a>
+        </div>
+        <div class="d-inline-block mx-2">
+          <a class="text-reset text-decoration-none small" href="https://github.com/swiftfiddle/swiftfiddle-formatter"
+            target="_blank" rel="nofollow noopener noreferrer"><span
+              class="fa-regular fa-comment-alt-smile"></span><span class="mx-2">Feedback</span></a>
+        </div>
+        <div class="d-inline-block mx-2">
+          <a class="text-reset text-decoration-none small" href="https://github.com/swiftfiddle/swiftfiddle-formatter"
+            target="_blank" rel="nofollow noopener noreferrer"><span class="fa-brands fa-github"></span><span
+              class="mx-2">Source Code</span></a>
+        </div>
+        <div class="d-inline-block mx-2">
+          <a class="text-reset text-decoration-none small" href="https://hachyderm.io/@kishikawakatsumi" target="_blank"
+            rel="nofollow noopener noreferrer"><span class="fa-regular fa-at"></span><span
+              class="mx-2">Creator</span></a>
+        </div>
+        <div class="d-inline-block mx-2">
+          <a class="text-reset text-decoration-none small" href="https://github.com/sponsors/kishikawakatsumi"
             target="_blank" rel="nofollow noopener noreferrer">
-            <span class="far fa-at me-1"
-              style="display: inline-block; min-width: 1em; min-height: 1em;"></span>Creator</a>
+            <span class="fa-solid fa-heart" style="color: #bf3989;"></span></span><span class="mx-2">Donate</span></a>
         </div>
       </div>
     </footer>
-  </div>
-
-  <!-- Service List Offcanvas -->
-  <div class="offcanvas offcanvas-start text-dark" tabindex="-1" id="service-list-offcanvas"
-    aria-labelledby="service-list-offcanvas-label">
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="service-list-offcanvas-label">
-        <span class="far fa-toolbox fa-fw me-2"></span>Swift Web Tools
-      </h5>
-      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
-      </button>
-    </div>
-    <div class="offcanvas-body py-1">
-      <div class="card mb-3">
-        <div class="row g-0">
-          <div class="col">
-            <a href="https://swiftfiddle.com" class="text-reset text-decoration-none" target="_blank"
-              rel="nofollow noopener noreferrer">
-              <div class="card-body">
-                <img src="/images/icon-swiftfiddle.com.svg" class="float-start me-2 rounded-3"
-                  style="width: 54px; height: 54px" alt="...">
-                <h5 class="card-title">SwiftFiddle</h5>
-                <h6 class="text-muted">Swift Online Playground</h6>
-                <p class="card-text">SwiftFiddle is an online playground for creating, sharing and embedding Swift
-                  fiddles
-                  (little Swift programs that run directly in your browser).</p>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="card mb-3">
-        <div class="row g-0">
-          <div class="col">
-            <a href="https://swift-ast-explorer.com" class="text-reset text-decoration-none" target="_blank"
-              rel="nofollow noopener noreferrer">
-              <div class="card-body">
-                <img src="/images/icon_swift-ast-explorer.com.svg" class="float-start me-2 rounded-3"
-                  style="width: 54px; height: 54px" alt="...">
-                <h5 class="card-title">Swift AST Explorer</h5>
-                <h6 class="text-muted">AST visualizer for Swift source code</h6>
-                <p class="card-text">Visualize Swift AST and select nodes within the editor, a great way to learn about
-                  the structure of
-                  Swift syntax trees.</p>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="card mb-3">
-        <div class="row g-0">
-          <div class="col">
-            <a href="https://swift-format.com" class="text-reset text-decoration-none" target="_blank"
-              rel="nofollow noopener noreferrer">
-              <div class="card-body">
-                <img src="/images/icon_swift-format.com.svg" class="float-start me-2 rounded-3"
-                  style="width: 54px; height: 54px" alt="...">
-                <h5 class="card-title text-dark">Swift Formatter</h5>
-                <h6 class="text-muted">Online Swift code formatter</h6>
-                <p class="card-text text-dark">Format a Swift code, making it readable and pretty, with the proper
-                  indentation.</p>
-              </div>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 
   <!-- Configuration Offcanvas -->
@@ -183,21 +133,26 @@
     aria-labelledby="configuration-offcanvas-label">
     <div class="offcanvas-header">
       <h5 class="offcanvas-title" id="configuration-offcanvas-label">
-        <span class="fas fa-cog fa-fw me-2"></span>Configuration
+        <span class="fa-solid fa-cog fa-fw me-2"></span>Configuration
       </h5>
-      <button id="reset-config-button" class="btn btn-outline-primary btn-sm rounded-circle p-0 ms-2" type="button"
-        data-bs-toggle="tooltip" data-bs-placement="bottom" title="Reset to default" aria-label="Reset to default">
-        <span class="fas fa-undo fa-fw"></span>
+
+      <button id="reset-config-button" type="button"
+        class="btn btn-outline-primary btn-sm rounded-circle button-circle mx-1" data-bs-toggle="tooltip"
+        data-bs-placement="bottom" data-bs-container="#reset-config-button" title="Reset to default"
+        aria-label="Reset to default" style="width: 2rem; height: 2rem;">
+        <span class="fa-solid fa-undo"></span>
       </button>
-      <button id="copy-config-button" class="btn btn-outline-primary btn-sm rounded-circle p-0 ms-2" type="button"
-        data-bs-toggle="tooltip" data-bs-placement="bottom" title="Copy config JSON" aria-label="Copy config JSON">
-        <span class="far fa-clipboard fa-fw"></span>
+      <button id="copy-config-button" type="button"
+        class="btn btn-outline-primary btn-sm rounded-circle button-circle mx-1" data-bs-toggle="tooltip"
+        data-bs-placement="bottom" data-bs-container="#copy-config-button" title="Copy config JSON"
+        aria-label="Copy config JSON" style="width: 2rem; height: 2rem;">
+        <span class="fa-regular fa-clipboard"></span>
       </button>
-      <a id="swift-format-repo-button" class="btn btn-outline-primary btn-sm rounded-circle p-0 ms-2 me-auto"
+      <a id="swift-format-repo-button" class="btn btn-outline-primary btn-sm rounded-circle button-circle mx-1 me-auto"
         href="https://github.com/apple/swift-format" target="_blank" rel="nofollow noopener noreferrer"
         data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-container="#swift-format-repo-button"
-        title="Visit swift-format repo" aria-label="Visit swift-format repo">
-        <span class="fab fa-github fa-fw" style="width: 1rem; height: 100%;"></span>
+        title="Visit swift-format repo" aria-label="Visit swift-format repo" style="width: 2rem; height: 2rem;">
+        <span class="fa-brands fa-github"></span>
       </a>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
       </button>
@@ -715,17 +670,15 @@
     <div class="row">
       <div class="col">
         <div class="text-dark">
-          <p>Online playground for <a href="https://github.com/apple/swift-format" target="_blank"
-              rel="nofollow noopener noreferrer"><code>swift-format</code></a>. You can quickly try <a
+          <p>Experience an online playground for <a href="https://github.com/apple/swift-format" target="_blank"
+              rel="nofollow noopener noreferrer"><code>swift-format</code></a>, allowing for rapid testing of <a
               href="https://github.com/apple/swift-format/blob/main/Documentation/Configuration.md" target="_blank"
-              rel="nofollow noopener noreferrer">various
-              configurations</a> of <code>swift-format</code> online.
-          </p>
-          <p>For more information about <code>swift-format</code>, please see the repository.<br>
-            <a href="https://github.com/apple/swift-format" target="_blank"
+              rel="nofollow noopener noreferrer">diverse
+              configurations</a> directly on the web.</p>
+          <p>For a comprehensive understanding of swift-format, delve into the repository at <a
+              href="https://github.com/apple/swift-format" target="_blank"
               rel="nofollow noopener noreferrer">apple/swift-format
-            </a>
-          </p>
+            </a>.</p>
         </div>
       </div>
     </div>

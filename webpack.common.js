@@ -1,7 +1,7 @@
 const path = require("path");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebbackPlugin = require("copy-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: {
@@ -58,23 +58,21 @@ module.exports = {
     ],
   },
   plugins: [
-    new MiniCssExtractPlugin({
-      filename: "[name].[contenthash].css",
+    new CopyWebbackPlugin({
+      patterns: [
+        { from: "./Public/images/*.*", to: "images/[name][ext]" },
+        { from: "./Public/favicons/*.*", to: "[name][ext]" },
+        { from: "./Public/error.html", to: "error.leaf" },
+        { from: "./Public/robots.txt", to: "robots.txt" },
+      ],
     }),
     new HtmlWebpackPlugin({
       chunks: ["index"],
       filename: "index.leaf",
       template: "./Public/index.html",
     }),
-    new CopyWebbackPlugin({
-      patterns: [
-        { from: "./Public/images", to: "images" },
-        { from: "./Public/favicons", to: "favicons" },
-        { from: "./Public/apple-touch-icon.png", to: "apple-touch-icon.png" },
-        { from: "./Public/favicon.ico", to: "favicon.ico" },
-        { from: "./Public/error.html", to: "error.leaf" },
-        { from: "./Public/robots.txt", to: "robots.txt" },
-      ],
+    new MiniCssExtractPlugin({
+      filename: "[name].[contenthash].css",
     }),
   ],
 };
