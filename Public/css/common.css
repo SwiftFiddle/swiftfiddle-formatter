@@ -39,3 +39,7 @@ a .card-body {
 a .card-body:hover {
   background-color: #f8f9fa;
 }
+
+.svg-inline--fa.fa-fw {
+  width: 1em;
+}

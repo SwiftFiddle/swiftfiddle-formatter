@@ -24,6 +24,7 @@ import {
   faRulerTriangle,
   faMonitorHeartRate,
 } from "@fortawesome/pro-light-svg-icons";
+import { faSpinnerThird } from "@fortawesome/pro-duotone-svg-icons";
 import { faSwift, faGithub } from "@fortawesome/free-brands-svg-icons";
 
 config.searchPseudoElements = true;
@@ -47,6 +48,8 @@ library.add(
   faSlidersV,
   faRulerTriangle,
   faMonitorHeartRate,
+
+  faSpinnerThird,
 
   faSwift,
   faGithub
