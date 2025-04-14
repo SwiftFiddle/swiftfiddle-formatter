@@ -55,7 +55,7 @@ WORKDIR /app
 COPY --from=swift --chown=vapor:vapor /staging /app
 
 USER vapor:vapor
-EXPOSE $PORT
+EXPOSE 8080
 
 ENTRYPOINT ["./App"]
 CMD ["serve", "--env", "production", "--hostname", "0.0.0.0"]
