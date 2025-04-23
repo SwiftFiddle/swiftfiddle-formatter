@@ -1,12 +1,5 @@
 "use strict";
 
-import Plausible from "plausible-tracker";
-
-const { enableAutoPageviews } = Plausible({
-  domain: "swift-format.com",
-});
-enableAutoPageviews();
-
 import "./scss/default.scss";
 
 import "codemirror/lib/codemirror.css";
