@@ -7,7 +7,7 @@ let package = Package(
     .macOS(.v10_15)
   ],
   dependencies: [
-    .package(url: "https://github.com/vapor/vapor.git", from: "4.115.0"),
+    .package(url: "https://github.com/vapor/vapor.git", from: "4.115.1"),
     .package(url: "https://github.com/vapor/leaf.git", from: "4.5.0"),
     .package(url: "https://github.com/apple/swift-format.git", from: "510.1.0"),
   ],
