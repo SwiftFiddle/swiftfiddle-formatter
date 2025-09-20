@@ -13,7 +13,7 @@ COPY Public ./Public/
 RUN npx webpack --config webpack.prod.js
 
 
-FROM swift:6.1-jammy as swift
+FROM swift:6.2-jammy as swift
 RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true \
     && apt-get -q update \
     && apt-get -q dist-upgrade -y\
@@ -40,7 +40,7 @@ RUN [ -d /build/Public ] && { mv /build/Public ./Public && chmod -R a-w ./Public
 RUN [ -d /build/Resources ] && { mv /build/Resources ./Resources && chmod -R a-w ./Resources; } || true
 
 
-FROM swift:6.1-jammy-slim
+FROM swift:6.2-jammy-slim
 RUN export DEBIAN_FRONTEND=noninteractive DEBCONF_NONINTERACTIVE_SEEN=true \
     && apt-get -q update \
     && apt-get -q dist-upgrade -y \
