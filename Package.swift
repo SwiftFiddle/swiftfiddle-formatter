@@ -4,12 +4,12 @@ import PackageDescription
 let package = Package(
   name: "swiftfiddle-format",
   platforms: [
-    .macOS(.v10_15)
+    .macOS(.v13)
   ],
   dependencies: [
     .package(url: "https://github.com/vapor/vapor.git", from: "4.119.2"),
     .package(url: "https://github.com/vapor/leaf.git", from: "4.5.1"),
-    .package(url: "https://github.com/apple/swift-format.git", from: "510.1.0"),
+    .package(url: "https://github.com/apple/swift-format.git", from: "602.0.0"),
   ],
   targets: [
     .executableTarget(
