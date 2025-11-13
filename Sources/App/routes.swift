@@ -1,6 +1,6 @@
 import Foundation
 import Vapor
-import SwiftFormatConfiguration
+import SwiftFormat
 
 func routes(_ app: Application) throws {
   app.get("health") { _ in ["status": "pass"] }
