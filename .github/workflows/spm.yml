@@ -8,7 +8,7 @@ jobs:
   run:
     runs-on: macos-15
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Update Package.resolved
         run: |
           set -ex
