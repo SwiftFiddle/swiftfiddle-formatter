@@ -4,15 +4,16 @@
     "dev": "webpack --progress --config webpack.dev.js"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "7.2.0",
-    "@fortawesome/free-brands-svg-icons": "7.2.0",
-    "@fortawesome/pro-duotone-svg-icons": "6.4.0",
-    "@fortawesome/pro-light-svg-icons": "6.4.0",
-    "@fortawesome/pro-regular-svg-icons": "6.4.0",
-    "@fortawesome/pro-solid-svg-icons": "6.4.0",
+    "@codemirror/autocomplete": "6.20.3",
+    "@codemirror/commands": "6.10.3",
+    "@codemirror/language": "6.12.3",
+    "@codemirror/legacy-modes": "6.5.3",
+    "@codemirror/lint": "6.9.7",
+    "@codemirror/state": "6.6.0",
+    "@codemirror/view": "6.43.1",
     "@popperjs/core": "2.11.8",
     "bootstrap": "5.3.8",
-    "codemirror": "5.65.21",
+    "bootstrap-icons": "1.13.1",
     "reconnecting-websocket": "4.4.0"
   },
   "devDependencies": {

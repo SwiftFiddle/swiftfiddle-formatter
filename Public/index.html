@@ -49,13 +49,15 @@
       <div class="col">
         <div class="d-inline-block mx-1">
           <a class="text-decoration-none" href="/">
-            <span class="fa-brands fa-swift fa-2x text-primary d-inline-block align-middle p-1 swift-logo"></span><span
-              class="h4 text-dark d-inline-block align-middle m-0">Swift Formatter</span>
+            <svg class="text-primary d-inline-block align-middle p-1 swift-logo" xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24" fill="currentColor" role="img" aria-label="Swift">
+              <path d="M7.508 0c-.287 0-.573 0-.86.002-.241.002-.483.003-.724.01-.132.003-.263.009-.395.015A9.154 9.154 0 0 0 4.348.15 5.492 5.492 0 0 0 2.85.645 5.04 5.04 0 0 0 .645 2.848c-.245.48-.4.972-.495 1.5-.093.52-.122 1.05-.136 1.576a35.2 35.2 0 0 0-.012.724C0 6.935 0 7.221 0 7.508v8.984c0 .287 0 .575.002.862.002.24.005.481.012.722.014.526.043 1.057.136 1.576.095.528.25 1.02.495 1.5a5.03 5.03 0 0 0 2.205 2.203c.48.244.97.4 1.498.495.52.093 1.05.124 1.576.138.241.007.483.009.724.01.287.002.573.002.86.002h8.984c.287 0 .573 0 .86-.002.241-.001.483-.003.724-.01a10.523 10.523 0 0 0 1.578-.138 5.322 5.322 0 0 0 1.498-.495 5.035 5.035 0 0 0 2.203-2.203c.245-.48.4-.972.495-1.5.093-.52.124-1.05.138-1.576.007-.241.009-.481.01-.722.002-.287.002-.575.002-.862V7.508c0-.287 0-.573-.002-.86a33.662 33.662 0 0 0-.01-.724 10.5 10.5 0 0 0-.138-1.576 5.328 5.328 0 0 0-.495-1.5A5.039 5.039 0 0 0 21.152.645 5.32 5.32 0 0 0 19.654.15a10.493 10.493 0 0 0-1.578-.138 34.98 34.98 0 0 0-.722-.01C17.067 0 16.779 0 16.492 0H7.508zm6.035 3.41c4.114 2.47 6.545 7.162 5.549 11.131-.024.093-.05.181-.076.272l.002.001c2.062 2.538 1.5 5.258 1.236 4.745-1.072-2.086-3.066-1.568-4.088-1.043a6.803 6.803 0 0 1-.281.158l-.02.012-.002.002c-2.115 1.123-4.957 1.205-7.812-.022a12.568 12.568 0 0 1-5.64-4.838c.649.48 1.35.902 2.097 1.252 3.019 1.414 6.051 1.311 8.197-.002C9.651 12.73 7.101 9.67 5.146 7.191a10.628 10.628 0 0 1-1.005-1.384c2.34 2.142 6.038 4.83 7.365 5.576C8.69 8.408 6.208 4.743 6.324 4.86c4.436 4.47 8.528 6.996 8.528 6.996.154.085.27.154.36.213.085-.215.16-.437.224-.668.708-2.588-.09-5.548-1.893-7.992z" />
+            </svg><span class="h4 text-dark d-inline-block align-middle m-0">Swift Formatter</span>
           </a>
           <button id="run-button" type="button" class="btn btn-primary btn-sm rounded-pill px-4 m-1 disabled"
             aria-label="Update">
-            <span id="run-button-icon" class="fa-solid fa-play fa-fw"></span>
-            <span id="run-button-spinner" class="fa-duotone fa-spinner-third fa-spin fa-fw d-none"></span>
+            <i id="run-button-icon" class="bi bi-play-fill"></i>
+            <i id="run-button-spinner" class="bi bi-arrow-repeat spin d-none"></i>
             <span class="px-1">Run</span>
           </button>
           <span data-bs-toggle="offcanvas" data-bs-target="#configuration-offcanvas" aria-label="Configuration">
@@ -63,18 +65,18 @@
               class="btn btn-outline-primary btn-sm rounded-circle button-circle m-1" data-bs-toggle="tooltip"
               data-bs-placement="bottom" data-bs-container="#configuration-button" title="Configuration"
               aria-label="Configuration">
-              <span class="fa-solid fa-cog fa-fw"></span>
+              <i class="bi bi-gear-fill"></i>
             </button>
           </span>
           <button id="clear-button" type="button"
             class="btn btn-outline-primary btn-sm rounded-circle button-circle m-1 disabled" data-bs-toggle="tooltip"
             data-bs-placement="bottom" data-bs-container="#clear-button" title="Clear" aria-label="Clear">
-            <span class="fa-solid fa-eraser fa-fw"></span>
+            <i class="bi bi-eraser-fill"></i>
           </button>
           <span data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-container="#about-button" title="About">
             <button id="about-button" type="button"
               class="btn btn-outline-primary btn-sm rounded-circle button-circle m-1" aria-label="About">
-              <span class="fa-solid fa-question fa-fw"></span>
+              <i class="bi bi-question-lg"></i>
             </button>
           </span>
         </div>
@@ -100,29 +102,29 @@
       <div class="col p-1 text-center">
         <div class="d-inline-block mx-2">
           <a class="text-reset text-decoration-none small" href="https://status.swift-format.com" target="_blank"
-            rel="nofollow noopener noreferrer"><span class="fa-light fa-monitor-heart-rate"></span><span
+            rel="nofollow noopener noreferrer"><i class="bi bi-heart-pulse"></i><span
               class="mx-2">System
               Status</span></a>
         </div>
         <div class="d-inline-block mx-2">
           <a class="text-reset text-decoration-none small" href="https://github.com/swiftfiddle/swiftfiddle-formatter"
-            target="_blank" rel="nofollow noopener noreferrer"><span
-              class="fa-regular fa-comment-alt-smile"></span><span class="mx-2">Feedback</span></a>
+            target="_blank" rel="nofollow noopener noreferrer"><i
+              class="bi bi-chat-dots"></i><span class="mx-2">Feedback</span></a>
         </div>
         <div class="d-inline-block mx-2">
           <a class="text-reset text-decoration-none small" href="https://github.com/swiftfiddle/swiftfiddle-formatter"
-            target="_blank" rel="nofollow noopener noreferrer"><span class="fa-brands fa-github"></span><span
+            target="_blank" rel="nofollow noopener noreferrer"><i class="bi bi-github"></i><span
               class="mx-2">Source Code</span></a>
         </div>
         <div class="d-inline-block mx-2">
           <a class="text-reset text-decoration-none small" href="https://hachyderm.io/@kishikawakatsumi" target="_blank"
-            rel="nofollow noopener noreferrer"><span class="fa-regular fa-at"></span><span
+            rel="nofollow noopener noreferrer"><i class="bi bi-at"></i><span
               class="mx-2">Creator</span></a>
         </div>
         <div class="d-inline-block mx-2">
           <a class="text-reset text-decoration-none small" href="https://github.com/sponsors/kishikawakatsumi"
             target="_blank" rel="nofollow noopener noreferrer">
-            <span class="fa-solid fa-heart" style="color: #bf3989;"></span></span><span class="mx-2">Donate</span></a>
+            <i class="bi bi-heart-fill" style="color: #bf3989;"></i><span class="mx-2">Donate</span></a>
         </div>
       </div>
     </footer>
@@ -132,27 +134,27 @@
   <div class="offcanvas offcanvas-start text-dark" tabindex="-1" id="configuration-offcanvas"
     aria-labelledby="configuration-offcanvas-label">
     <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="configuration-offcanvas-label">
-        <span class="fa-solid fa-cog fa-fw me-2"></span>Configuration
+      <h5 class="offcanvas-title me-3" id="configuration-offcanvas-label">
+        <i class="bi bi-gear-fill me-2"></i>Configuration
       </h5>
 
       <button id="reset-config-button" type="button"
         class="btn btn-outline-primary btn-sm rounded-circle button-circle mx-1" data-bs-toggle="tooltip"
         data-bs-placement="bottom" data-bs-container="#reset-config-button" title="Reset to default"
         aria-label="Reset to default" style="width: 2rem; height: 2rem;">
-        <span class="fa-solid fa-undo"></span>
+        <i class="bi bi-arrow-counterclockwise"></i>
       </button>
       <button id="copy-config-button" type="button"
         class="btn btn-outline-primary btn-sm rounded-circle button-circle mx-1" data-bs-toggle="tooltip"
         data-bs-placement="bottom" data-bs-container="#copy-config-button" title="Copy config JSON"
         aria-label="Copy config JSON" style="width: 2rem; height: 2rem;">
-        <span class="fa-regular fa-clipboard"></span>
+        <i class="bi bi-clipboard"></i>
       </button>
       <a id="swift-format-repo-button" class="btn btn-outline-primary btn-sm rounded-circle button-circle mx-1 me-auto"
         href="https://github.com/swiftlang/swift-format" target="_blank" rel="nofollow noopener noreferrer"
         data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-container="#swift-format-repo-button"
         title="Visit swift-format repo" aria-label="Visit swift-format repo" style="width: 2rem; height: 2rem;">
-        <span class="fa-brands fa-github"></span>
+        <i class="bi bi-github"></i>
       </a>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
       </button>
@@ -161,7 +163,7 @@
     <div class="offcanvas-body py-1">
       <form>
         <div>
-          <h6 class="pt-2 pb-1"><span class="fal fa-sliders-v me-2"></span>Settings</h6>
+          <h6 class="pt-2 pb-1"><i class="bi bi-sliders me-2"></i>Settings</h6>
         </div>
 
         <div class="row mb-2 justify-content-between">
@@ -387,7 +389,7 @@
         </div>
 
         <div>
-          <h6 class="pt-3 pb-1"><span class="fal fa-ruler-triangle me-2"></span>Rules</h6>
+          <h6 class="pt-3 pb-1"><i class="bi bi-rulers me-2"></i>Rules</h6>
         </div>
 
         <div class="row mb-2 justify-content-between">
@@ -891,8 +893,8 @@
       aria-atomic="true">
       <div class="d-flex">
         <div class="toast-body fw-bolder">
-          <span class="far fa-check-circle fa-lg text-success me-2">
-          </span><span id="snackbar-info-message" class="text-dark"></span>
+          <i class="bi bi-check-circle fs-5 text-success me-2"></i><span id="snackbar-info-message"
+            class="text-dark"></span>
         </div>
         <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
@@ -902,7 +904,7 @@
     <div id="snackbar-alert" class="toast align-items-center d-none" role="alert" aria-live="assertive"
       aria-atomic="true">
       <div class="toast-header">
-        <span class="fas fa-exclamation-triangle text-danger me-2"></span>
+        <i class="bi bi-exclamation-triangle-fill text-danger me-2"></i>
         <strong class="me-auto">Error</strong>
         <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>

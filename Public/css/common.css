@@ -1,31 +1,17 @@
-.CodeMirror * {
-  line-height: 1.6;
-  font-family: Menlo, Consolas, "DejaVu Sans Mono", "Ubuntu Mono", monospace;
-  font-size: 12px;
-  max-height: 90vh;
-}
-
+/* On desktop the layout already bounds the editor height, so the scroller (and
+   thus the gutter) fills the full pane down to the status bar. Only cap the
+   height on small screens, where the two stacked panes share the viewport. */
 @media (max-width: 767.98px) {
-  .CodeMirror * {
+  .cm-editor {
     max-height: 50vh;
   }
 }
 
 .dropdown-list-item.active-tick a::after {
-  font-family: "Font Awesome 6 Pro";
-  content: "\f00c";
+  font-family: "bootstrap-icons";
+  content: "\f26e"; /* bi-check */
   color: #0d6efd;
   float: right;
-  display: none;
-  width: 1rem;
-  height: 1.5rem;
-}
-
-.dropdown-list-item.active-tick svg {
-  color: #0d6efd;
-  float: right;
-  width: 1rem;
-  height: 1.5rem;
 }
 
 a .card-body {
@@ -40,6 +26,28 @@ a .card-body:hover {
   background-color: #f8f9fa;
 }
 
-.svg-inline--fa.fa-fw {
-  width: 1em;
+/* Center the icon in the circular buttons; Bootstrap's asymmetric button
+   padding otherwise pushes the icon slightly off-center. */
+.button-circle {
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Spin the run button's progress icon while a request is in flight. */
+.spin {
+  display: inline-block;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
