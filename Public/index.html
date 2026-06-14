@@ -149,7 +149,7 @@
         <span class="fa-regular fa-clipboard"></span>
       </button>
       <a id="swift-format-repo-button" class="btn btn-outline-primary btn-sm rounded-circle button-circle mx-1 me-auto"
-        href="https://github.com/apple/swift-format" target="_blank" rel="nofollow noopener noreferrer"
+        href="https://github.com/swiftlang/swift-format" target="_blank" rel="nofollow noopener noreferrer"
         data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-container="#swift-format-repo-button"
         title="Visit swift-format repo" aria-label="Visit swift-format repo" style="width: 2rem; height: 2rem;">
         <span class="fa-brands fa-github"></span>
@@ -306,6 +306,86 @@
           </div>
         </div>
 
+        <div class="row mb-2 justify-content-between">
+          <label for="spacesBeforeEndOfLineComments" class="col-8 col-form-label-sm">
+            Spaces Before End Of Line Comments
+          </label>
+          <div class="col-4">
+            <input id="spacesBeforeEndOfLineComments" class="form-control form-control-sm" type="number"
+              pattern="[0-9]*" inputmode="numeric" placeholder="2" aria-label="Spaces Before End Of Line Comments">
+          </div>
+        </div>
+
+        <div class="row mb-2 justify-content-between">
+          <label for="lineBreakBetweenDeclarationAttributes" class="col-9 col-form-label-sm">
+            Line Break Between Declaration Attributes
+          </label>
+          <div class="col-auto d-table">
+            <div class="form-check form-switch d-table-cell align-middle">
+              <input id="lineBreakBetweenDeclarationAttributes" class="form-check-input" type="checkbox">
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-2 justify-content-between">
+          <label for="spacesAroundRangeFormationOperators" class="col-9 col-form-label-sm">
+            Spaces Around Range Formation Operators
+          </label>
+          <div class="col-auto d-table">
+            <div class="form-check form-switch d-table-cell align-middle">
+              <input id="spacesAroundRangeFormationOperators" class="form-check-input" type="checkbox">
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-2 justify-content-between">
+          <label for="multiElementCollectionTrailingCommas" class="col-9 col-form-label-sm">
+            Multi Element Collection Trailing Commas
+          </label>
+          <div class="col-auto d-table">
+            <div class="form-check form-switch d-table-cell align-middle">
+              <input id="multiElementCollectionTrailingCommas" class="form-check-input" type="checkbox" checked>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-2 justify-content-between">
+          <label for="indentBlankLines" class="col-9 col-form-label-sm">
+            Indent Blank Lines
+          </label>
+          <div class="col-auto d-table">
+            <div class="form-check form-switch d-table-cell align-middle">
+              <input id="indentBlankLines" class="form-check-input" type="checkbox">
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-2 justify-content-between">
+          <label for="reflowMultilineStringLiterals" class="col-6 col-form-label-sm">
+            Reflow Multiline String Literals
+          </label>
+          <div class="col-6">
+            <button id="reflowMultilineStringLiterals" class="btn btn-sm btn-outline-secondary dropdown-toggle w-100"
+              type="button" data-bs-toggle="dropdown" aria-expanded="false">never</button>
+            <ul class="dropdown-menu">
+              <li class="dropdown-list-item active-tick"><a class="dropdown-item" href="#">never</a></li>
+              <li class="dropdown-list-item"><a class="dropdown-item" href="#">onlyLinesOverLength</a></li>
+              <li class="dropdown-list-item"><a class="dropdown-item" href="#">always</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row mb-2 justify-content-between">
+          <label for="allowedFunctions" class="col-12 col-form-label-sm">
+            No Assignment In Expressions: Allowed Functions
+            <span class="text-muted">(comma-separated)</span>
+          </label>
+          <div class="col-12">
+            <input id="allowedFunctions" class="form-control form-control-sm" type="text"
+              placeholder="XCTAssertNoThrow" aria-label="No Assignment In Expressions Allowed Functions">
+          </div>
+        </div>
+
         <div>
           <h6 class="pt-3 pb-1"><span class="fal fa-ruler-triangle me-2"></span>Rules</h6>
         </div>
@@ -317,6 +397,17 @@
           <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle">
               <input id="AllPublicDeclarationsHaveDocumentation" class="form-check-input" type="checkbox">
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-2 justify-content-between">
+          <label for="AlwaysUseLiteralForEmptyCollectionInit" class="col-9 col-form-label-sm">
+            Always Use Literal For Empty Collection Init
+          </label>
+          <div class="col-auto d-table">
+            <div class="form-check form-switch d-table-cell align-middle">
+              <input id="AlwaysUseLiteralForEmptyCollectionInit" class="form-check-input" type="checkbox">
             </div>
           </div>
         </div>
@@ -339,6 +430,17 @@
           <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle">
               <input id="AmbiguousTrailingClosureOverload" class="form-check-input" type="checkbox" checked>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-2 justify-content-between">
+          <label for="AvoidRetroactiveConformances" class="col-9 col-form-label-sm">
+            Avoid Retroactive Conformances
+          </label>
+          <div class="col-auto d-table">
+            <div class="form-check form-switch d-table-cell align-middle">
+              <input id="AvoidRetroactiveConformances" class="form-check-input" type="checkbox" checked>
             </div>
           </div>
         </div>
@@ -465,6 +567,17 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
+          <label for="NoAssignmentInExpressions" class="col-9 col-form-label-sm">
+            No Assignment In Expressions
+          </label>
+          <div class="col-auto d-table">
+            <div class="form-check form-switch d-table-cell align-middle">
+              <input id="NoAssignmentInExpressions" class="form-check-input" type="checkbox" checked>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-2 justify-content-between">
           <label for="NoBlockComments" class="col-9 col-form-label-sm">
             No Block Comments
           </label>
@@ -482,6 +595,17 @@
           <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle">
               <input id="NoCasesWithOnlyFallthrough" class="form-check-input" type="checkbox" checked>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-2 justify-content-between">
+          <label for="NoEmptyLinesOpeningClosingBraces" class="col-9 col-form-label-sm">
+            No Empty Lines Opening Closing Braces
+          </label>
+          <div class="col-auto d-table">
+            <div class="form-check form-switch d-table-cell align-middle">
+              <input id="NoEmptyLinesOpeningClosingBraces" class="form-check-input" type="checkbox">
             </div>
           </div>
         </div>
@@ -531,12 +655,34 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
+          <label for="NoPlaygroundLiterals" class="col-9 col-form-label-sm">
+            No Playground Literals
+          </label>
+          <div class="col-auto d-table">
+            <div class="form-check form-switch d-table-cell align-middle">
+              <input id="NoPlaygroundLiterals" class="form-check-input" type="checkbox" checked>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-2 justify-content-between">
           <label for="NoVoidReturnOnFunctionSignature" class="col-9 col-form-label-sm">
             No Void Return On Function Signature
           </label>
           <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle">
               <input id="NoVoidReturnOnFunctionSignature" class="form-check-input" type="checkbox" checked>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-2 justify-content-between">
+          <label for="OmitExplicitReturns" class="col-9 col-form-label-sm">
+            Omit Explicit Returns
+          </label>
+          <div class="col-auto d-table">
+            <div class="form-check form-switch d-table-cell align-middle">
+              <input id="OmitExplicitReturns" class="form-check-input" type="checkbox">
             </div>
           </div>
         </div>
@@ -586,12 +732,56 @@
         </div>
 
         <div class="row mb-2 justify-content-between">
+          <label for="ReplaceForEachWithForLoop" class="col-9 col-form-label-sm">
+            Replace For Each With For Loop
+          </label>
+          <div class="col-auto d-table">
+            <div class="form-check form-switch d-table-cell align-middle">
+              <input id="ReplaceForEachWithForLoop" class="form-check-input" type="checkbox" checked>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-2 justify-content-between">
           <label for="ReturnVoidInsteadOfEmptyTuple" class="col-9 col-form-label-sm">
             Return Void Instead Of Empty Tuple
           </label>
           <div class="col-auto d-table">
             <div class="form-check form-switch d-table-cell align-middle">
               <input id="ReturnVoidInsteadOfEmptyTuple" class="form-check-input" type="checkbox" checked>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-2 justify-content-between">
+          <label for="TypeNamesShouldBeCapitalized" class="col-9 col-form-label-sm">
+            Type Names Should Be Capitalized
+          </label>
+          <div class="col-auto d-table">
+            <div class="form-check form-switch d-table-cell align-middle">
+              <input id="TypeNamesShouldBeCapitalized" class="form-check-input" type="checkbox" checked>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-2 justify-content-between">
+          <label for="UseEarlyExits" class="col-9 col-form-label-sm">
+            Use Early Exits
+          </label>
+          <div class="col-auto d-table">
+            <div class="form-check form-switch d-table-cell align-middle">
+              <input id="UseEarlyExits" class="form-check-input" type="checkbox">
+            </div>
+          </div>
+        </div>
+
+        <div class="row mb-2 justify-content-between">
+          <label for="UseExplicitNilCheckInConditions" class="col-9 col-form-label-sm">
+            Use Explicit Nil Check In Conditions
+          </label>
+          <div class="col-auto d-table">
+            <div class="form-check form-switch d-table-cell align-middle">
+              <input id="UseExplicitNilCheckInConditions" class="form-check-input" type="checkbox" checked>
             </div>
           </div>
         </div>
@@ -651,6 +841,17 @@
           </div>
         </div>
 
+        <div class="row mb-2 justify-content-between">
+          <label for="UseWhereClausesInForLoops" class="col-9 col-form-label-sm">
+            Use Where Clauses In For Loops
+          </label>
+          <div class="col-auto d-table">
+            <div class="form-check form-switch d-table-cell align-middle">
+              <input id="UseWhereClausesInForLoops" class="form-check-input" type="checkbox">
+            </div>
+          </div>
+        </div>
+
         <div class="row mb-2 pb-5 justify-content-between">
           <label for="ValidateDocumentationComments" class="col-9 col-form-label-sm">
             Validate Documentation Comments
@@ -670,13 +871,13 @@
     <div class="row">
       <div class="col">
         <div class="text-dark">
-          <p>Experience an online playground for <a href="https://github.com/apple/swift-format" target="_blank"
+          <p>Experience an online playground for <a href="https://github.com/swiftlang/swift-format" target="_blank"
               rel="nofollow noopener noreferrer"><code>swift-format</code></a>, allowing for rapid testing of <a
-              href="https://github.com/apple/swift-format/blob/main/Documentation/Configuration.md" target="_blank"
+              href="https://github.com/swiftlang/swift-format/blob/main/Documentation/Configuration.md" target="_blank"
               rel="nofollow noopener noreferrer">diverse
               configurations</a> directly on the web.</p>
           <p>For a comprehensive understanding of swift-format, delve into the repository at <a
-              href="https://github.com/apple/swift-format" target="_blank"
+              href="https://github.com/swiftlang/swift-format" target="_blank"
               rel="nofollow noopener noreferrer">apple/swift-format
             </a>.</p>
         </div>
