@@ -2,18 +2,7 @@
 
 import "./scss/default.scss";
 
-import "codemirror/lib/codemirror.css";
-import "codemirror/addon/lint/lint.css";
-
 import "./css/common.css";
-
-import CodeMirror from "codemirror";
-import "codemirror/mode/swift/swift";
-import "codemirror/addon/display/panel";
-import "codemirror/addon/edit/matchbrackets";
-import "codemirror/addon/edit/closebrackets";
-import "codemirror/addon/edit/trailingspace";
-import "codemirror/addon/lint/lint";
 
 import "./js/icon.js";
 import "./js/about.js";
@@ -27,15 +16,19 @@ import { initEditor } from "./js/editor.js";
 import { initResultView } from "./js/result_view.js";
 import { debounce } from "./js/debounce.js";
 
+const updateOnTextChange = debounce(() => {
+  sendFormatRequest();
+}, 400);
+
 const editor = initEditor(
   document.getElementById("editor-container"),
-  document.getElementById("editor-statusbar")
+  document.getElementById("editor-statusbar"),
+  updateOnTextChange
 );
 
-editor.setValue(Defaults.code);
-editor.clearHistory();
+editor.reset(Defaults.code);
 editor.focus();
-editor.setCursor({ line: editor.lastLine() + 1, ch: 0 });
+editor.setCursorToEnd();
 
 const resultView = initResultView(
   document.getElementById("result-container"),
@@ -58,40 +51,29 @@ formatterService.onresponse = (response) => {
       resultView.setValue(response.original);
     }
 
-    editor.setOption("lint", {
-      getAnnotations: () => {
-        const message = response.lintMessage;
-        const matches = message.matchAll(
-          /<stdin>:(\d+):(\d+): (error|warning|note): ([\s\S]*?)\n*(?=(?:\/|$))/gi
-        );
-        return [...matches].map((match) => {
-          const row = +match[1] - 1; // 0 origin
-          const column = +match[2];
-          const text = match[4];
-          const severity = match[3];
+    const doc = editor.view.state.doc;
+    // Each diagnostic is a single line: "<stdin>:LINE:COL: severity: message".
+    const matches = response.lintMessage.matchAll(
+      /<stdin>:(\d+):(\d+): (error|warning|note): (.*)/gi
+    );
+    const diagnostics = [...matches].map((match) => {
+      const lineNumber = Math.min(Math.max(+match[1], 1), doc.lines);
+      const column = +match[2];
+      const line = doc.line(lineNumber);
+      const from = Math.min(line.from + Math.max(column - 1, 0), line.to);
+      const to = Math.min(from + 1, line.to);
+      // swift-format emits "note"; map it to CodeMirror's "info" severity.
+      const severity = match[3] === "note" ? "info" : match[3];
 
-          return {
-            from: CodeMirror.Pos(row, column),
-            to: CodeMirror.Pos(row, column + 1),
-            message: text,
-            severity: severity,
-          };
-        });
-      },
+      return { from, to, message: match[4].trim(), severity };
     });
+    editor.setDiagnostics(diagnostics);
 
     if (response.error) {
       Snackbar.alert(response.error);
     }
   }
 };
-
-const updateOnTextChange = debounce(() => {
-  sendFormatRequest();
-}, 400);
-editor.on("change", () => {
-  updateOnTextChange();
-});
 
 document.querySelectorAll(".dropdown-list-item").forEach((listItem) => {
   listItem.addEventListener("click", () => {
@@ -117,10 +99,8 @@ document.getElementById("run-button").addEventListener("click", () => {
 });
 
 document.getElementById("clear-button").addEventListener("click", () => {
-  editor.setValue("");
-  editor.clearHistory();
+  editor.reset("");
   resultView.setValue("");
-  resultView.clearHistory();
 });
 
 document.getElementById("reset-config-button").addEventListener("click", () => {
