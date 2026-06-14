@@ -25,10 +25,10 @@ COPY ./Package.* ./
 RUN swift package resolve
 
 COPY . .
-RUN swift build -c release --static-swift-stdlib
+RUN swift build -c release
 
 COPY ./Resources ./
-RUN cd Resources/formatter && swift build --product swift-format -c release --static-swift-stdlib
+RUN cd Resources/formatter && swift build --product swift-format -c release
 
 WORKDIR /staging
 

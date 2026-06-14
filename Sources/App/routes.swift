@@ -100,7 +100,7 @@ func routes(_ app: Application) throws {
       fileURLWithPath: "\(app.directory.resourcesDirectory)formatter/.build/release/swift-format"
     )
     process.executableURL = executableURL
-    process.arguments = [subcommand, "--configuration", configurationFile.path]
+    process.arguments = [subcommand, "--configuration", configurationFile.path, "-"]
 
     process.standardInput = standardInput
     process.standardOutput = standardOutput
