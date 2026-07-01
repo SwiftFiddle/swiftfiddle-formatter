@@ -9,7 +9,7 @@ let package = Package(
   dependencies: [
     .package(url: "https://github.com/vapor/vapor.git", from: "4.121.4"),
     .package(url: "https://github.com/vapor/leaf.git", from: "4.5.2"),
-    .package(url: "https://github.com/apple/swift-format.git", from: "602.0.0"),
+    .package(url: "https://github.com/apple/swift-format.git", from: "603.0.0"),
   ],
   targets: [
     .executableTarget(
